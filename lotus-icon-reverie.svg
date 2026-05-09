@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- App icon background: warm linen rounded square -->
+  <rect width="1024" height="1024" rx="224" ry="224" fill="#F4F1EC"/>
+  <radialGradient id="bg" cx="50%" cy="65%" r="60%">
+    <stop offset="0%" stop-color="#EAE6DF"/>
+    <stop offset="100%" stop-color="#F4F1EC"/>
+  </radialGradient>
+  <rect width="1024" height="1024" rx="224" ry="224" fill="url(#bg)"/>
+
+  <!--
+    LOTUS — ornate outline style with internal cutouts, like the reference image.
+    All petals are drawn as closed paths: outer shell minus inner void = the curved petal shape.
+    Main colour: sage green #5C8A6E
+    Accent centre: terracotta #C4714A
+  -->
+
+  <g transform="translate(512, 560)">
+
+    <!-- ══ OUTER RING: 5 large petals fanning from centre ══ -->
+
+    <!-- Centre-back petal (straight up) -->
+    <path d="
+      M 0,-240
+      C 55,-230 80,-160 72,-80
+      C 60,0 30,40 0,52
+      C -30,40 -60,0 -72,-80
+      C -80,-160 -55,-230 0,-240 Z
+    " fill="#5C8A6E"/>
+    <!-- inner void -->
+    <path d="
+      M 0,-210
+      C 38,-200 56,-140 50,-72
+      C 42,-10 18,24 0,34
+      C -18,24 -42,-10 -50,-72
+      C -56,-140 -38,-200 0,-210 Z
+    " fill="#F4F1EC"/>
+
+    <!-- Left-inner petal (rotated -32°) -->
+    <g transform="rotate(-32)">
+      <path d="
+        M 0,-240
+        C 55,-230 80,-160 72,-80
+        C 60,0 30,40 0,52
+        C -30,40 -60,0 -72,-80
+        C -80,-160 -55,-230 0,-240 Z
+      " fill="#5C8A6E"/>
+      <path d="
+        M 0,-210 C 38,-200 56,-140 50,-72
+        C 42,-10 18,24 0,34
+        C -18,24 -42,-10 -50,-72
+        C -56,-140 -38,-200 0,-210 Z
+      " fill="#F4F1EC"/>
+    </g>
+
+    <!-- Right-inner petal (rotated +32°) -->
+    <g transform="rotate(32)">
+      <path d="
+        M 0,-240
+        C 55,-230 80,-160 72,-80
+        C 60,0 30,40 0,52
+        C -30,40 -60,0 -72,-80
+        C -80,-160 -55,-230 0,-240 Z
+      " fill="#5C8A6E"/>
+      <path d="
+        M 0,-210 C 38,-200 56,-140 50,-72
+        C 42,-10 18,24 0,34
+        C -18,24 -42,-10 -50,-72
+        C -56,-140 -38,-200 0,-210 Z
+      " fill="#F4F1EC"/>
+    </g>
+
+    <!-- Left-outer petal (rotated -64°) -->
+    <g transform="rotate(-64)">
+      <path d="
+        M 0,-220
+        C 50,-210 74,-145 66,-70
+        C 55,10 25,48 0,58
+        C -25,48 -55,10 -66,-70
+        C -74,-145 -50,-210 0,-220 Z
+      " fill="#7A8A5C"/>
+      <path d="
+        M 0,-192 C 36,-183 52,-128 46,-62
+        C 38,5 16,38 0,46
+        C -16,38 -38,5 -46,-62
+        C -52,-128 -36,-183 0,-192 Z
+      " fill="#F4F1EC"/>
+    </g>
+
+    <!-- Right-outer petal (rotated +64°) -->
+    <g transform="rotate(64)">
+      <path d="
+        M 0,-220
+        C 50,-210 74,-145 66,-70
+        C 55,10 25,48 0,58
+        C -25,48 -55,10 -66,-70
+        C -74,-145 -50,-210 0,-220 Z
+      " fill="#7A8A5C"/>
+      <path d="
+        M 0,-192 C 36,-183 52,-128 46,-62
+        C 38,5 16,38 0,46
+        C -16,38 -38,5 -46,-62
+        C -52,-128 -36,-183 0,-192 Z
+      " fill="#F4F1EC"/>
+    </g>
+
+    <!-- ══ LOWER WING PETALS (wide, fanning out at the base) ══ -->
+
+    <!-- Far-left wing (rotated -100°) -->
+    <g transform="rotate(-100)">
+      <path d="
+        M 0,-195
+        C 45,-185 66,-122 60,-55
+        C 50,18 22,52 0,62
+        C -22,52 -50,18 -60,-55
+        C -66,-122 -45,-185 0,-195 Z
+      " fill="#5C8A6E" opacity="0.80"/>
+      <path d="
+        M 0,-168 C 32,-160 46,-108 41,-46
+        C 34,14 14,42 0,50
+        C -14,42 -34,14 -41,-46
+        C -46,-108 -32,-160 0,-168 Z
+      " fill="#F4F1EC"/>
+    </g>
+
+    <!-- Far-right wing (rotated +100°) -->
+    <g transform="rotate(100)">
+      <path d="
+        M 0,-195
+        C 45,-185 66,-122 60,-55
+        C 50,18 22,52 0,62
+        C -22,52 -50,18 -60,-55
+        C -66,-122 -45,-185 0,-195 Z
+      " fill="#5C8A6E" opacity="0.80"/>
+      <path d="
+        M 0,-168 C 32,-160 46,-108 41,-46
+        C 34,14 14,42 0,50
+        C -14,42 -34,14 -41,-46
+        C -46,-108 -32,-160 0,-168 Z
+      " fill="#F4F1EC"/>
+    </g>
+
+    <!-- ══ BOTTOM LEAF PETALS (horizontal, like lily pads spreading) ══ -->
+
+    <!-- Bottom-left sweep (rotated -130°) -->
+    <g transform="rotate(-130)">
+      <path d="
+        M 0,-170
+        C 38,-162 56,-104 50,-44
+        C 42,22 18,54 0,62
+        C -18,54 -42,22 -50,-44
+        C -56,-104 -38,-162 0,-170 Z
+      " fill="#7A8A5C" opacity="0.70"/>
+      <path d="
+        M 0,-145 C 28,-138 42,-88 37,-35
+        C 30,18 12,44 0,50
+        C -12,44 -30,18 -37,-35
+        C -42,-88 -28,-138 0,-145 Z
+      " fill="#F4F1EC"/>
+    </g>
+
+    <!-- Bottom-right sweep (rotated +130°) -->
+    <g transform="rotate(130)">
+      <path d="
+        M 0,-170
+        C 38,-162 56,-104 50,-44
+        C 42,22 18,54 0,62
+        C -18,54 -42,22 -50,-44
+        C -56,-104 -38,-162 0,-170 Z
+      " fill="#7A8A5C" opacity="0.70"/>
+      <path d="
+        M 0,-145 C 28,-138 42,-88 37,-35
+        C 30,18 12,44 0,50
+        C -12,44 -30,18 -37,-35
+        C -42,-88 -28,-138 0,-145 Z
+      " fill="#F4F1EC"/>
+    </g>
+
+    <!-- ══ CENTRE: terracotta bud ══ -->
+    <!-- Outer bud -->
+    <ellipse cx="0" cy="-18" rx="38" ry="52" fill="#C4714A"/>
+    <!-- Inner bud highlight -->
+    <ellipse cx="0" cy="-22" rx="22" ry="36" fill="#D4945A"/>
+    <!-- Top tip accent -->
+    <ellipse cx="0" cy="-48" rx="12" ry="14" fill="#C4714A"/>
+
+    <!-- ══ BASE / WATER LINE ══ -->
+    <path d="M -200,80 Q 0,55 200,80" stroke="#5C8A6E" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.30"/>
+    <path d="M -160,95 Q 0,72 160,95" stroke="#7A8A5C" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.20"/>
+
+  </g>
+</svg>

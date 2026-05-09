@@ -1,0 +1,56 @@
+# Matchfile
+# For more information about Matchfile: https://docs.fastlane.tools/actions/match/
+
+# Git repo for storing certificates and profiles
+git_url ENV["MATCH_GIT_URL"] || "https://github.com/YourOrg/iAlly-certificates"
+
+# Storage mode (git, google_cloud, s3, gitlab_secure_files)
+storage_mode "git"
+
+# App Identifier
+app_identifier "com.irigam.iAlly"
+
+# Your Apple ID
+username ENV["FASTLANE_USER"] || "your-apple-id@example.com"
+
+# Team ID
+team_id ENV["FASTLANE_TEAM_ID"]
+
+# Types: development, adhoc, appstore, enterprise
+type "appstore"
+
+# Automatically create certificates and profiles if they don't exist
+readonly false
+
+# Force renewal of certificates even if they're not expired
+force false
+
+# Force for new devices
+force_for_new_devices true
+
+# Keychain name
+keychain_name "fastlane_tmp_keychain"
+
+# Keychain password
+keychain_password ENV["MATCH_KEYCHAIN_PASSWORD"] || "temp_password_for_ci"
+
+# Additional certificate types
+# Uncomment to generate all types at once:
+# type("development")
+# type("adhoc")
+# type("appstore")
+
+# Platform
+platform "ios"
+
+# Shallow clone (faster for CI)
+shallow_clone true
+
+# Clone branch depth
+clone_branch_directly false
+
+# Skip confirmation prompts (for CI)
+skip_confirmation true
+
+# For more information about Matchfile, see:
+# https://docs.fastlane.tools/actions/match

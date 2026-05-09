@@ -1,0 +1,225 @@
+name: App Store Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., 1.2.0)'
+        required: true
+        type: string
+      release_notes:
+        description: 'App Store release notes'
+        required: true
+        type: string
+      submit_for_review:
+        description: 'Submit for review immediately'
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  pre_release_checks:
+    runs-on: macos-15
+    name: Pre-Release Validation
+    outputs:
+      version: ${{ steps.validate.outputs.version }}
+      build: ${{ steps.validate.outputs.build }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Validate version format
+        id: validate
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          
+          # Validate semantic version format
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "❌ Invalid version format: $VERSION"
+            echo "Expected format: X.Y.Z (e.g., 1.2.0)"
+            exit 1
+          fi
+          
+          # Check if tag already exists
+          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+            echo "❌ Version v$VERSION already exists as a git tag"
+            exit 1
+          fi
+          
+          echo "✅ Version $VERSION is valid"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+      
+      - name: Setup Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      
+      - name: Install dependencies
+        run: |
+          gem install fastlane --no-document
+          bundle install || gem install bundler && bundle install
+      
+      - name: Set version
+        run: |
+          ./scripts/version.sh set-version ${{ steps.validate.outputs.version }}
+          BUILD=$(./scripts/version.sh get | grep "Build Number:" | awk '{print $3}')
+          echo "build=$BUILD" >> $GITHUB_OUTPUT
+          echo "📦 Set version to ${{ steps.validate.outputs.version }} (build $BUILD)"
+      
+      - name: Run full test suite
+        run: fastlane test
+      
+      - name: Validate release notes
+        run: |
+          NOTES="${{ github.event.inputs.release_notes }}"
+          LENGTH=${#NOTES}
+          
+          if [[ $LENGTH -lt 10 ]]; then
+            echo "❌ Release notes too short (minimum 10 characters)"
+            exit 1
+          fi
+          
+          if [[ $LENGTH -gt 4000 ]]; then
+            echo "❌ Release notes too long (maximum 4000 characters)"
+            exit 1
+          fi
+          
+          echo "✅ Release notes validated ($LENGTH characters)"
+
+  build_and_release:
+    needs: pre_release_checks
+    runs-on: macos-15
+    name: Build & Release to App Store
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      
+      - name: Install Fastlane
+        run: |
+          gem install fastlane --no-document
+          bundle install || gem install bundler && bundle install
+      
+      - name: Import App Store Connect API Key
+        env:
+          APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+        run: |
+          mkdir -p ~/.appstoreconnect/private_keys
+          echo "$APP_STORE_CONNECT_API_KEY_KEY" > ~/.appstoreconnect/private_keys/AuthKey_${APP_STORE_CONNECT_API_KEY_KEY_ID}.p8
+      
+      - name: Import Code Signing Certificates
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+        run: fastlane setup_signing
+      
+      - name: Set release version
+        run: ./scripts/version.sh set-version ${{ needs.pre_release_checks.outputs.version }}
+      
+      - name: Build release
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+        run: fastlane build_release
+      
+      - name: Upload to App Store Connect
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+          DELIVER_ITMSTRANSPORTER_ADDITIONAL_UPLOAD_PARAMETERS: "-t DAV"
+        run: |
+          # Save release notes to file
+          echo "${{ github.event.inputs.release_notes }}" > /tmp/release_notes.txt
+          
+          # Upload to App Store
+          fastlane deliver \
+            --force \
+            --skip_screenshots \
+            --skip_metadata \
+            --submit_for_review ${{ github.event.inputs.submit_for_review }} \
+            --automatic_release false \
+            --precheck_include_in_app_purchases false \
+            --release_notes /tmp/release_notes.txt
+      
+      - name: Commit version bump
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add iAlly/iAlly.xcodeproj/project.pbxproj
+          git commit -m "Release v${{ needs.pre_release_checks.outputs.version }} (${{ needs.pre_release_checks.outputs.build }})"
+          git push origin main
+      
+      - name: Create release tag
+        run: |
+          git tag -a "v${{ needs.pre_release_checks.outputs.version }}" \
+            -m "Release v${{ needs.pre_release_checks.outputs.version }}"
+          git push origin "v${{ needs.pre_release_checks.outputs.version }}"
+      
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ needs.pre_release_checks.outputs.version }}
+          release_name: iAlly v${{ needs.pre_release_checks.outputs.version }}
+          body: |
+            ## iAlly v${{ needs.pre_release_checks.outputs.version }}
+            
+            **Build:** ${{ needs.pre_release_checks.outputs.build }}
+            **Status:** ${{ github.event.inputs.submit_for_review && 'Submitted for Review' || 'Uploaded to App Store Connect' }}
+            
+            ### Release Notes
+            ${{ github.event.inputs.release_notes }}
+            
+            ---
+            
+            **Download:** Available on the [App Store](https://apps.apple.com/app/iAlly)
+          draft: false
+          prerelease: false
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: appstore-release-${{ needs.pre_release_checks.outputs.version }}
+          path: |
+            builds/*.ipa
+            builds/*.dSYM.zip
+            fastlane/report.xml
+      
+      - name: Post success summary
+        if: success()
+        run: |
+          echo "## 🎉 App Store Release Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ needs.pre_release_checks.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Build:** ${{ needs.pre_release_checks.outputs.build }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Submit for Review:** ${{ github.event.inputs.submit_for_review }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [[ "${{ github.event.inputs.submit_for_review }}" == "true" ]]; then
+            echo "✅ Build submitted for App Store review" >> $GITHUB_STEP_SUMMARY
+            echo "📧 You'll receive an email with review status updates" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "📦 Build uploaded to App Store Connect" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️  Remember to manually submit for review in App Store Connect" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 [View in App Store Connect](https://appstoreconnect.apple.com)" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Post failure summary
+        if: failure()
+        run: |
+          echo "## ❌ App Store Release Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The release process encountered an error." >> $GITHUB_STEP_SUMMARY
+          echo "Check the logs above for details." >> $GITHUB_STEP_SUMMARY

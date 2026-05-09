@@ -1,0 +1,116 @@
+# Xcode
+.DS_Store
+build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# Xcode - Swift Package Manager
+/.build/
+/Packages/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/README.md
+
+# Fastlane Match (certificates)
+fastlane/certs/
+fastlane/profiles/
+
+# Builds
+builds/
+*.ipa
+*.dSYM.zip
+
+# CocoaPods
+Podfile.lock
+
+# macOS
+*.DS_Store
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+
+# Archives
+*.xcarchive
+
+# Signing
+*.mobileprovision
+*.entitlements
+
+# Test Results
+*.xcresult
+TestResults-*
+*.zip
+local_*.log
+artifacts/
+ui-logs-*/
+unit-logs-*/
+ui18/
+failures.txt
+summary.txt
+ui_error_tail_*.txt
+
+# CI Monitoring
+.ci_monitor.pid
+ci_monitor.log
+
+# Logs
+*.log
+logs/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.p8
+*.p12
+*.cer
+*.certSigningRequest
+fastlane/.env
+fastlane/.env.*
+
+# Bundler
+vendor/bundle/
+.bundle/
+Gemfile.lock
+
+# Swift PM
+.swiftpm
+
+# xcworkspace user data
+*.xcworkspace/xcuserdata
+
+# Claude / AI session context — internal dev notes, never commit
+CLAUDE.md
+ios/CLAUDE.md
+**/CLAUDE.md
+
+# Setup scripts with potential key references
+setup-api-keys.sh
+
+# Kiro IDE settings
+.kiro/
+
+# entitlements (may contain team IDs)
+*.entitlements

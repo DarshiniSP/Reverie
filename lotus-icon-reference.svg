@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Background: rounded square, warm linen -->
+  <rect width="1024" height="1024" rx="230" ry="230" fill="#F4F1EC"/>
+
+  <!-- Subtle inner glow gradient -->
+  <radialGradient id="bgGlow" cx="50%" cy="60%" r="55%">
+    <stop offset="0%" stop-color="#EAE6DF"/>
+    <stop offset="100%" stop-color="#F4F1EC"/>
+  </radialGradient>
+  <rect width="1024" height="1024" rx="230" ry="230" fill="url(#bgGlow)"/>
+
+  <!-- === LOTUS PETALS === -->
+  <!-- The lotus has 5 outer petals (sage green) + 3 inner petals (terracotta) + centre dot -->
+
+  <!-- Outer left-back petal -->
+  <ellipse cx="370" cy="490" rx="88" ry="210"
+           transform="rotate(-38 370 490)"
+           fill="#5C8A6E" opacity="0.75"/>
+
+  <!-- Outer right-back petal -->
+  <ellipse cx="654" cy="490" rx="88" ry="210"
+           transform="rotate(38 654 490)"
+           fill="#5C8A6E" opacity="0.75"/>
+
+  <!-- Outer far-left petal -->
+  <ellipse cx="295" cy="550" rx="72" ry="190"
+           transform="rotate(-60 295 550)"
+           fill="#7A8A5C" opacity="0.60"/>
+
+  <!-- Outer far-right petal -->
+  <ellipse cx="729" cy="550" rx="72" ry="190"
+           transform="rotate(60 729 550)"
+           fill="#7A8A5C" opacity="0.60"/>
+
+  <!-- Back centre petal (sage, tallest) -->
+  <ellipse cx="512" cy="430" rx="90" ry="230"
+           fill="#5C8A6E" opacity="0.80"/>
+
+  <!-- Inner left petal (terracotta) -->
+  <ellipse cx="430" cy="530" rx="68" ry="175"
+           transform="rotate(-22 430 530)"
+           fill="#C4714A" opacity="0.82"/>
+
+  <!-- Inner right petal (terracotta) -->
+  <ellipse cx="594" cy="530" rx="68" ry="175"
+           transform="rotate(22 594 530)"
+           fill="#C4714A" opacity="0.82"/>
+
+  <!-- Inner centre petal (terracotta, front) -->
+  <ellipse cx="512" cy="510" rx="72" ry="185"
+           fill="#C4714A" opacity="0.90"/>
+
+  <!-- === WATER / BASE LINE === -->
+  <!-- Gentle curved reflection line -->
+  <path d="M 260 720 Q 512 690 764 720" stroke="#5C8A6E" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.35"/>
+  <path d="M 300 740 Q 512 715 724 740" stroke="#7A8A5C" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.25"/>
+
+  <!-- === CENTRE STAMEN DOT === -->
+  <circle cx="512" cy="510" r="28" fill="#F4F1EC" opacity="0.95"/>
+  <circle cx="512" cy="510" r="16" fill="#D4945A"/>
+
+  <!-- Small stamen dots -->
+  <circle cx="476" cy="490" r="8" fill="#F4F1EC" opacity="0.8"/>
+  <circle cx="548" cy="490" r="8" fill="#F4F1EC" opacity="0.8"/>
+  <circle cx="512" cy="472" r="8" fill="#F4F1EC" opacity="0.8"/>
+</svg>

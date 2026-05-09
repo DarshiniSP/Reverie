@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>Reverie</string>
+	<key>CFBundleSpokenName</key>
+	<string>reverie</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Reverie uses Face ID to protect your personal data, goals, and journeys when the app is locked.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Reverie needs access to your calendar to show events alongside your tasks and help you plan your day better.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Reverie needs access to your contacts to help you quickly add participants to journeys and expenses. Your contacts stay private and are only used when you explicitly select them.</string>
+	<key>NSSiriUsageDescription</key>
+	<string>Reverie uses Siri to help you quickly add tasks using voice commands like "Add buy milk to Reverie".</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Reverie needs access to your photo library to attach photos to your tasks and journeys.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Reverie needs permission to save photos to your photo library.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Reverie needs access to your camera to take photos for your tasks and journeys.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Reverie uses speech recognition to transcribe your voice when capturing tasks and chatting with Lumina.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Reverie needs access to your microphone to record voice input for tasks and conversations with Lumina.</string>
+	<key>IntentsSupported</key>
+	<array>
+		<string>AddTaskIntent</string>
+	</array>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>AddTaskIntent</string>
+		<string>AddTaskIntentIntent</string>
+		<string>com.irigam.iAlly.addTask</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict/>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.irigam.iAlly.proactiveIntelligence</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.595466536912-lpd0l7rvv9usa28m0mke4ukcthgk7jt3</string>
+			</array>
+		</dict>
+	</array>
+	<key>GIDClientID</key>
+	<string>595466536912-lpd0l7rvv9usa28m0mke4ukcthgk7jt3.apps.googleusercontent.com</string>
+</dict>
+</plist>

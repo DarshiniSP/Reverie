@@ -1,0 +1,159 @@
+{
+  "version": 1,
+  "project": {
+    "name": "iAlly iOS",
+    "root": ".",
+    "targets": [
+      "iAlly",
+      "iAllyWidgetExtension",
+      "iAllyIntents",
+      "iAllyIntentsUI",
+      "iAllyTests",
+      "iAllyUITests"
+    ]
+  },
+  "include": [
+    "**/*.swift",
+    "**/*.intentdefinition",
+    "**/*Info.plist",
+    "**/Info.plist",
+    "**/*.storyboard",
+    "**/*.xib",
+    "**/*.entitlements",
+    "**/*.xcassets/**",
+    "iAlly.xcodeproj/project.pbxproj",
+    "fastlane/**",
+    "scripts/**",
+    "Gemfile",
+    "run_*.sh",
+    "**/*.md"
+  ],
+  "exclude": [
+    "**/.git/**",
+    "**/.DS_Store",
+    "**/DerivedData/**",
+    "**/build/**",
+    "**/Build/**",
+    "**/.build/**",
+    "**/.swiftpm/**",
+    "iAllyWebsite/**",
+    "_Archive/**",
+    "TestResults/**"
+  ],
+  "capabilities": {
+    "file": {
+      "read": true,
+      "write": true,
+      "root": "."
+    },
+    "git": {
+      "enabled": true,
+      "readOnly": true,
+      "commands": ["status", "log", "diff", "rev-parse", "show"]
+    },
+    "terminal": {
+      "enabled": true,
+      "nonInteractiveOnly": true,
+      "deny": [
+        "less", "more", "vi", "nano", "vim", "emacs",
+        "sudo", "shutdown", "reboot"
+      ]
+    },
+    "search": {
+      "regex": true,
+      "glob": true
+    }
+  },
+  "index": {
+    "storeDir": ".antigravity/index",
+    "strategy": "incremental",
+    "reindexTriggers": {
+      "onSave": true,
+      "onGitChange": true,
+      "onXcodeProjectChange": true
+    },
+    "swift": {
+      "symbolGraph": true,
+      "usageIndex": true,
+      "dependencyEdges": ["calls", "conformances", "imports"],
+      "testLinkage": true
+    },
+    "xcode": {
+      "parseProject": true,
+      "projectFile": "iAlly.xcodeproj/project.pbxproj",
+      "extract": [
+        "targets",
+        "buildPhases",
+        "fileMembership",
+        "buildSettings",
+        "runpaths",
+        "embedPhases"
+      ]
+    },
+    "assets": {
+      "plistKeys": true,
+      "intentDefinitions": true
+    }
+  },
+  "context": {
+    "providers": [
+      "swiftSymbols",
+      "swiftUsages",
+      "swiftDependencies",
+      "xcodeTargetGraph",
+      "plistKeys",
+      "intentDefinition",
+      "uiTestsLinkage",
+      "scriptsFastlane"
+    ],
+    "policy": {
+      "minAlwaysInclude": [
+        "fileBeingEdited",
+        "ownerTargetBuildSettings",
+        "directDependencies",
+        "relatedPlistsAndEntitlements"
+      ],
+      "ranking": [
+        "directMatches",
+        "sameTarget",
+        "crossTargetCallers",
+        "tests",
+        "scripts"
+      ],
+      "maxContextKB": 512
+    }
+  },
+  "guards": {
+    "edits": {
+      "mode": "preferDiff",
+      "allowFullWriteForNewFiles": true,
+      "restrictToProjectRoot": true
+    },
+    "commands": {
+      "requireExplanation": true,
+      "denyPaging": true,
+      "denyInteractive": true
+    },
+    "postEditChecks": {
+      "build": {
+        "enabled": true,
+        "scheme": "iAlly"
+      },
+      "tests": {
+        "enabled": true,
+        "uiTests": true,
+        "unitTests": true,
+        "allowFailFast": true
+      }
+    }
+  },
+  "defaults": {
+    "iosDeploymentTarget": "17.0",
+    "swiftVersion": "5.0"
+  },
+  "notes": [
+    "Ensure extension targets have valid IPHONEOS_DEPLOYMENT_TARGET (e.g., 17.0) to avoid Xcode indexing failures.",
+    "IntentDefinition is shared across multiple targets; keep its source membership consistent.",
+    "Post-edit: rebuild index incrementally for changed files and dependents."
+  ]
+}

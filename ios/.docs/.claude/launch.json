@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "arch-review",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "/Users/irigamdeveloper/Projects/PAI/iAlly/ios/.docs"],
+      "port": 8765
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+name: TestFlight Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_bump:
+        description: 'Version bump type'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+          - none
+        default: 'patch'
+      distribution:
+        description: 'Distribution type'
+        required: true
+        type: choice
+        options:
+          - internal
+          - external
+        default: 'internal'
+      changelog:
+        description: 'Release notes for testers (optional)'
+        required: false
+        type: string
+
+jobs:
+  deploy_testflight:
+    runs-on: macos-15
+    name: Deploy to TestFlight
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for changelog generation
+      
+      - name: Setup Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      
+      - name: Install Fastlane
+        run: |
+          gem install fastlane --no-document
+          fastlane --version
+      
+      - name: Setup Ruby dependencies
+        run: |
+          bundle install || gem install bundler && bundle install
+      
+      - name: Import App Store Connect API Key
+        env:
+          APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+        run: |
+          mkdir -p ~/.appstoreconnect/private_keys
+          echo "$APP_STORE_CONNECT_API_KEY_KEY" > ~/.appstoreconnect/private_keys/AuthKey_${APP_STORE_CONNECT_API_KEY_KEY_ID}.p8
+      
+      - name: Import Code Signing Certificates
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+        run: |
+          fastlane setup_signing
+      
+      - name: Bump version
+        if: github.event.inputs.version_bump != 'none'
+        run: |
+          ./scripts/version.sh ${{ github.event.inputs.version_bump }}
+          echo "VERSION_BUMPED=true" >> $GITHUB_ENV
+      
+      - name: Get version info
+        id: version
+        run: |
+          VERSION=$(./scripts/version.sh get | grep "Version:" | awk '{print $2}')
+          BUILD=$(./scripts/version.sh get | grep "Build Number:" | awk '{print $3}')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "build=$BUILD" >> $GITHUB_OUTPUT
+          echo "📦 Building version $VERSION ($BUILD)"
+      
+      - name: Run tests
+        run: fastlane test
+      
+      - name: Build and upload to TestFlight
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
+          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+        run: |
+          if [[ "${{ github.event.inputs.distribution }}" == "external" ]]; then
+            # External distribution with release notes
+            CHANGELOG="${{ github.event.inputs.changelog }}"
+            if [[ -z "$CHANGELOG" ]]; then
+              CHANGELOG=$(./scripts/version.sh changelog)
+            fi
+            echo "$CHANGELOG" > /tmp/changelog.txt
+            fastlane beta_external
+          else
+            # Internal distribution
+            fastlane beta
+          fi
+      
+      - name: Commit version bump
+        if: env.VERSION_BUMPED == 'true'
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add iAlly/iAlly.xcodeproj/project.pbxproj
+          git commit -m "Bump version to ${{ steps.version.outputs.version }} (${{ steps.version.outputs.build }}) [skip ci]"
+          git push origin main
+      
+      - name: Create git tag
+        if: env.VERSION_BUMPED == 'true'
+        run: |
+          git tag -a "v${{ steps.version.outputs.version }}" -m "TestFlight build ${{ steps.version.outputs.version }} (${{ steps.version.outputs.build }})"
+          git push origin "v${{ steps.version.outputs.version }}"
+      
+      - name: Upload build artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: testflight-build-${{ steps.version.outputs.version }}-${{ steps.version.outputs.build }}
+          path: |
+            builds/*.ipa
+            fastlane/test_output
+            fastlane/report.xml
+      
+      - name: Post deployment summary
+        if: success()
+        run: |
+          echo "## 🚀 TestFlight Deployment Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Build:** ${{ steps.version.outputs.build }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Distribution:** ${{ github.event.inputs.distribution }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Build has been uploaded to TestFlight and is now processing." >> $GITHUB_STEP_SUMMARY
+          echo "You'll receive an email when it's ready for testing." >> $GITHUB_STEP_SUMMARY
+      
+      - name: Post failure summary
+        if: failure()
+        run: |
+          echo "## ❌ TestFlight Deployment Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check the logs above for error details." >> $GITHUB_STEP_SUMMARY

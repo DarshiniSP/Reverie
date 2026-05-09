@@ -1,0 +1,1165 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		129AEDC24F494C1DBF40D340 /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B534D4D627134498BD86BA1D /* Journey.swift */; };
+		232E4427D5FD435EB8505576 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E81F31C6814BA68E6AC512 /* Task.swift */; };
+		30910629AF9C4AB592C3C97C /* MindsetEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01A5FDC98B49888D869B8E /* MindsetEvent.swift */; };
+		36F9E0A93779408988227E12 /* TimeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02D2E9909F4AE686A9BD3A /* TimeBlock.swift */; };
+		60B3478E495C42B4A8EB5B0C /* GrowthInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6632429AC4BAD8F16EE4A /* GrowthInsight.swift */; };
+		62F0177A02D444C293154062 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B5D6E33D304F8DA6525A54 /* Plan.swift */; };
+		6733406AC1B644F6AC2E08F9 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0324B51AA4B2A833A9EE9 /* Tag.swift */; };
+		79EA1E6A9A0C4DC49A8B6076 /* FocusSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2B31F287744542B6A887CF /* FocusSession.swift */; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F3 /* ChecklistItem.swift */; };
+		EDC5555217764F61A67EFC8A /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE566A312A844A3834047A3 /* Routine.swift */; };
+		F39C19FD2EEA8EF000F9A6D8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39C19FC2EEA8EF000F9A6D8 /* WidgetKit.framework */; };
+		F39C19FF2EEA8EF000F9A6D8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39C19FE2EEA8EF000F9A6D8 /* SwiftUI.framework */; };
+		F39C1A212EEA935100F9A6D8 /* SwiftData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39C1A202EEA935100F9A6D8 /* SwiftData.framework */; };
+		F39C1A302EEAB4EC00F9A6D8 /* iAllyIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F39C1A2F2EEAB4EC00F9A6D8 /* iAllyIntents.intentdefinition */; };
+		F39C1A312EEAB4EC00F9A6D8 /* iAllyIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F39C1A2F2EEAB4EC00F9A6D8 /* iAllyIntents.intentdefinition */; };
+		F39C1A3A2EEAC7AF00F9A6D8 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39C1A392EEAC7AF00F9A6D8 /* Intents.framework */; };
+		F39C1A452EEAC7B000F9A6D8 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F39C1A442EEAC7B000F9A6D8 /* IntentsUI.framework */; };
+		F39C1A632EEAE6EF00F9A6D8 /* iAllyIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F39C1A2F2EEAB4EC00F9A6D8 /* iAllyIntents.intentdefinition */; };
+		F39FD9742F593B030096FB80 /* iAllyIntents.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F39C1A382EEAC7AF00F9A6D8 /* iAllyIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F39FD9782F593B0A0096FB80 /* iAllyWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F39C19FA2EEA8EF000F9A6D8 /* iAllyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F35084332EE51F3B001682A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F350841B2EE51F39001682A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F35084222EE51F39001682A0;
+			remoteInfo = iAlly;
+		};
+		F350843D2EE51F3B001682A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F350841B2EE51F39001682A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F35084222EE51F39001682A0;
+			remoteInfo = iAlly;
+		};
+		F39FD9752F593B030096FB80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F350841B2EE51F39001682A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F39C1A372EEAC7AF00F9A6D8;
+			remoteInfo = iAllyIntents;
+		};
+		F39FD9792F593B0A0096FB80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F350841B2EE51F39001682A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F39C19F92EEA8EF000F9A6D8;
+			remoteInfo = iAllyWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F39FD9772F593B030096FB80 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F39FD9782F593B0A0096FB80 /* iAllyWidgetExtension.appex in Embed Foundation Extensions */,
+				F39FD9742F593B030096FB80 /* iAllyIntents.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		24B5D6E33D304F8DA6525A54 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Plan.swift; path = iAlly/Models/Plan.swift; sourceTree = "<group>"; };
+		8A02D2E9909F4AE686A9BD3A /* TimeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimeBlock.swift; path = iAlly/Models/TimeBlock.swift; sourceTree = "<group>"; };
+		8E01A5FDC98B49888D869B8E /* MindsetEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MindsetEvent.swift; path = iAlly/Models/MindsetEvent.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6A7B8C9D0E1F3 /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChecklistItem.swift; path = iAlly/Models/ChecklistItem.swift; sourceTree = "<group>"; };
+		AF2B31F287744542B6A887CF /* FocusSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FocusSession.swift; path = iAlly/Models/FocusSession.swift; sourceTree = "<group>"; };
+		B534D4D627134498BD86BA1D /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Journey.swift; path = iAlly/Models/Journey.swift; sourceTree = "<group>"; };
+		D5D6632429AC4BAD8F16EE4A /* GrowthInsight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GrowthInsight.swift; path = iAlly/Models/GrowthInsight.swift; sourceTree = "<group>"; };
+		EEE566A312A844A3834047A3 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Routine.swift; path = iAlly/Models/Routine.swift; sourceTree = "<group>"; };
+		F35084232EE51F39001682A0 /* iAlly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAlly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F35084322EE51F3B001682A0 /* iAllyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iAllyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F350843C2EE51F3B001682A0 /* iAllyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iAllyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F39C19FA2EEA8EF000F9A6D8 /* iAllyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iAllyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F39C19FC2EEA8EF000F9A6D8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F39C19FE2EEA8EF000F9A6D8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		F39C1A202EEA935100F9A6D8 /* SwiftData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftData.framework; path = System/Library/Frameworks/SwiftData.framework; sourceTree = SDKROOT; };
+		F39C1A222EEA93B800F9A6D8 /* iAllyWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iAllyWidgetExtension.entitlements; sourceTree = "<group>"; };
+		F39C1A2F2EEAB4EC00F9A6D8 /* iAllyIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = iAllyIntents.intentdefinition; sourceTree = "<group>"; };
+		F39C1A382EEAC7AF00F9A6D8 /* iAllyIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iAllyIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F39C1A392EEAC7AF00F9A6D8 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		F39C1A432EEAC7B000F9A6D8 /* iAllyIntentsUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iAllyIntentsUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F39C1A442EEAC7B000F9A6D8 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		F3E81F31C6814BA68E6AC512 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Task.swift; path = iAlly/Models/Task.swift; sourceTree = "<group>"; };
+		FEA0324B51AA4B2A833A9EE9 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tag.swift; path = iAlly/Models/Tag.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F39FD97B2F593C290096FB80 /* Exceptions for "iAlly" folder in "iAlly" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F35084222EE51F39001682A0 /* iAlly */;
+		};
+		F39FD97C2F593C410096FB80 /* Exceptions for "iAllyWidget" folder in "iAllyWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F39C19F92EEA8EF000F9A6D8 /* iAllyWidgetExtension */;
+		};
+		F39FD97D2F593C4C0096FB80 /* Exceptions for "iAllyIntents" folder in "iAllyIntents" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F39C1A372EEAC7AF00F9A6D8 /* iAllyIntents */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F35084252EE51F39001682A0 /* iAlly */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F39FD97B2F593C290096FB80 /* Exceptions for "iAlly" folder in "iAlly" target */,
+			);
+			path = iAlly;
+			sourceTree = "<group>";
+		};
+		F350843F2EE51F3B001682A0 /* iAllyUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = iAllyUITests;
+			sourceTree = "<group>";
+		};
+		F39C1A002EEA8EF000F9A6D8 /* iAllyWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F39FD97C2F593C410096FB80 /* Exceptions for "iAllyWidget" folder in "iAllyWidgetExtension" target */,
+			);
+			path = iAllyWidget;
+			sourceTree = "<group>";
+		};
+		F39C1A3B2EEAC7AF00F9A6D8 /* iAllyIntents */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F39FD97D2F593C4C0096FB80 /* Exceptions for "iAllyIntents" folder in "iAllyIntents" target */,
+			);
+			path = iAllyIntents;
+			sourceTree = "<group>";
+		};
+		F39C1A462EEAC7B000F9A6D8 /* iAllyIntentsUI */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = iAllyIntentsUI;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F35084202EE51F39001682A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F350842F2EE51F3B001682A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F35084392EE51F3B001682A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F39C19F72EEA8EF000F9A6D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F39C1A212EEA935100F9A6D8 /* SwiftData.framework in Frameworks */,
+				F39C19FF2EEA8EF000F9A6D8 /* SwiftUI.framework in Frameworks */,
+				F39C19FD2EEA8EF000F9A6D8 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F39C1A352EEAC7AF00F9A6D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F39C1A3A2EEAC7AF00F9A6D8 /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F39C1A402EEAC7B000F9A6D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F39C1A452EEAC7B000F9A6D8 /* IntentsUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F350841A2EE51F39001682A0 = {
+			isa = PBXGroup;
+			children = (
+				F39C1A2F2EEAB4EC00F9A6D8 /* iAllyIntents.intentdefinition */,
+				F39C1A222EEA93B800F9A6D8 /* iAllyWidgetExtension.entitlements */,
+				F35084252EE51F39001682A0 /* iAlly */,
+				F350843F2EE51F3B001682A0 /* iAllyUITests */,
+				F39C1A002EEA8EF000F9A6D8 /* iAllyWidget */,
+				F39C1A3B2EEAC7AF00F9A6D8 /* iAllyIntents */,
+				F39C1A462EEAC7B000F9A6D8 /* iAllyIntentsUI */,
+				F39C19FB2EEA8EF000F9A6D8 /* Frameworks */,
+				F35084242EE51F39001682A0 /* Products */,
+				F39FE3902F5940180096FB80 /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		F35084242EE51F39001682A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F35084232EE51F39001682A0 /* iAlly.app */,
+				F35084322EE51F3B001682A0 /* iAllyTests.xctest */,
+				F350843C2EE51F3B001682A0 /* iAllyUITests.xctest */,
+				F39C19FA2EEA8EF000F9A6D8 /* iAllyWidgetExtension.appex */,
+				F39C1A382EEAC7AF00F9A6D8 /* iAllyIntents.appex */,
+				F39C1A432EEAC7B000F9A6D8 /* iAllyIntentsUI.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F39C19FB2EEA8EF000F9A6D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F39C1A202EEA935100F9A6D8 /* SwiftData.framework */,
+				F39C19FC2EEA8EF000F9A6D8 /* WidgetKit.framework */,
+				F39C19FE2EEA8EF000F9A6D8 /* SwiftUI.framework */,
+				F39C1A392EEAC7AF00F9A6D8 /* Intents.framework */,
+				F39C1A442EEAC7B000F9A6D8 /* IntentsUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F39FE3902F5940180096FB80 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				F3E81F31C6814BA68E6AC512 /* Task.swift */,
+				24B5D6E33D304F8DA6525A54 /* Plan.swift */,
+				B534D4D627134498BD86BA1D /* Journey.swift */,
+				EEE566A312A844A3834047A3 /* Routine.swift */,
+				FEA0324B51AA4B2A833A9EE9 /* Tag.swift */,
+				8A02D2E9909F4AE686A9BD3A /* TimeBlock.swift */,
+				AF2B31F287744542B6A887CF /* FocusSession.swift */,
+				8E01A5FDC98B49888D869B8E /* MindsetEvent.swift */,
+				D5D6632429AC4BAD8F16EE4A /* GrowthInsight.swift */,
+				A1B2C3D4E5F6A7B8C9D0E1F3 /* ChecklistItem.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F35084222EE51F39001682A0 /* iAlly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F35084462EE51F3B001682A0 /* Build configuration list for PBXNativeTarget "iAlly" */;
+			buildPhases = (
+				F350841F2EE51F39001682A0 /* Sources */,
+				F35084202EE51F39001682A0 /* Frameworks */,
+				F35084212EE51F39001682A0 /* Resources */,
+				F39FD9772F593B030096FB80 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F39FD9762F593B030096FB80 /* PBXTargetDependency */,
+				F39FD97A2F593B0A0096FB80 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F35084252EE51F39001682A0 /* iAlly */,
+			);
+			name = iAlly;
+			packageProductDependencies = (
+			);
+			productName = iAlly;
+			productReference = F35084232EE51F39001682A0 /* iAlly.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F35084312EE51F3B001682A0 /* iAllyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F35084492EE51F3B001682A0 /* Build configuration list for PBXNativeTarget "iAllyTests" */;
+			buildPhases = (
+				F350842E2EE51F3B001682A0 /* Sources */,
+				F350842F2EE51F3B001682A0 /* Frameworks */,
+				F35084302EE51F3B001682A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F35084342EE51F3B001682A0 /* PBXTargetDependency */,
+			);
+			name = iAllyTests;
+			packageProductDependencies = (
+			);
+			productName = iAllyTests;
+			productReference = F35084322EE51F3B001682A0 /* iAllyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F350843B2EE51F3B001682A0 /* iAllyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F350844C2EE51F3B001682A0 /* Build configuration list for PBXNativeTarget "iAllyUITests" */;
+			buildPhases = (
+				F35084382EE51F3B001682A0 /* Sources */,
+				F35084392EE51F3B001682A0 /* Frameworks */,
+				F350843A2EE51F3B001682A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F350843E2EE51F3B001682A0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F350843F2EE51F3B001682A0 /* iAllyUITests */,
+			);
+			name = iAllyUITests;
+			packageProductDependencies = (
+			);
+			productName = iAllyUITests;
+			productReference = F350843C2EE51F3B001682A0 /* iAllyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		F39C19F92EEA8EF000F9A6D8 /* iAllyWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F39C1A102EEA8EF200F9A6D8 /* Build configuration list for PBXNativeTarget "iAllyWidgetExtension" */;
+			buildPhases = (
+				F39C19F62EEA8EF000F9A6D8 /* Sources */,
+				F39C19F72EEA8EF000F9A6D8 /* Frameworks */,
+				F39C19F82EEA8EF000F9A6D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F39C1A002EEA8EF000F9A6D8 /* iAllyWidget */,
+			);
+			name = iAllyWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = iAllyWidgetExtension;
+			productReference = F39C19FA2EEA8EF000F9A6D8 /* iAllyWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		F39C1A372EEAC7AF00F9A6D8 /* iAllyIntents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F39C1A572EEAC7B000F9A6D8 /* Build configuration list for PBXNativeTarget "iAllyIntents" */;
+			buildPhases = (
+				F39C1A342EEAC7AF00F9A6D8 /* Sources */,
+				F39C1A352EEAC7AF00F9A6D8 /* Frameworks */,
+				F39C1A362EEAC7AF00F9A6D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F39C1A3B2EEAC7AF00F9A6D8 /* iAllyIntents */,
+			);
+			name = iAllyIntents;
+			packageProductDependencies = (
+			);
+			productName = iAllyIntents;
+			productReference = F39C1A382EEAC7AF00F9A6D8 /* iAllyIntents.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		F39C1A422EEAC7B000F9A6D8 /* iAllyIntentsUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F39C1A532EEAC7B000F9A6D8 /* Build configuration list for PBXNativeTarget "iAllyIntentsUI" */;
+			buildPhases = (
+				F39C1A3F2EEAC7B000F9A6D8 /* Sources */,
+				F39C1A402EEAC7B000F9A6D8 /* Frameworks */,
+				F39C1A412EEAC7B000F9A6D8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F39C1A462EEAC7B000F9A6D8 /* iAllyIntentsUI */,
+			);
+			name = iAllyIntentsUI;
+			packageProductDependencies = (
+			);
+			productName = iAllyIntentsUI;
+			productReference = F39C1A432EEAC7B000F9A6D8 /* iAllyIntentsUI.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F350841B2EE51F39001682A0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					F35084222EE51F39001682A0 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					F35084312EE51F3B001682A0 = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = F35084222EE51F39001682A0;
+					};
+					F350843B2EE51F3B001682A0 = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = F35084222EE51F39001682A0;
+					};
+					F39C19F92EEA8EF000F9A6D8 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					F39C1A372EEAC7AF00F9A6D8 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					F39C1A422EEAC7B000F9A6D8 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+				};
+			};
+			buildConfigurationList = F350841E2EE51F39001682A0 /* Build configuration list for PBXProject "iAlly" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F350841A2EE51F39001682A0;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F35084242EE51F39001682A0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F35084222EE51F39001682A0 /* iAlly */,
+				F35084312EE51F3B001682A0 /* iAllyTests */,
+				F350843B2EE51F3B001682A0 /* iAllyUITests */,
+				F39C19F92EEA8EF000F9A6D8 /* iAllyWidgetExtension */,
+				F39C1A372EEAC7AF00F9A6D8 /* iAllyIntents */,
+				F39C1A422EEAC7B000F9A6D8 /* iAllyIntentsUI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F35084212EE51F39001682A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F35084302EE51F3B001682A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F350843A2EE51F3B001682A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F39C19F82EEA8EF000F9A6D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F39C1A362EEAC7AF00F9A6D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F39C1A412EEAC7B000F9A6D8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F350841F2EE51F39001682A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F39C1A302EEAB4EC00F9A6D8 /* iAllyIntents.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F350842E2EE51F3B001682A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F35084382EE51F3B001682A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F39C19F62EEA8EF000F9A6D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F39C1A312EEAB4EC00F9A6D8 /* iAllyIntents.intentdefinition in Sources */,
+				232E4427D5FD435EB8505576 /* Task.swift in Sources */,
+				A1B2C3D4E5F6A7B8C9D0E1F2 /* ChecklistItem.swift in Sources */,
+				62F0177A02D444C293154062 /* Plan.swift in Sources */,
+				129AEDC24F494C1DBF40D340 /* Journey.swift in Sources */,
+				EDC5555217764F61A67EFC8A /* Routine.swift in Sources */,
+				6733406AC1B644F6AC2E08F9 /* Tag.swift in Sources */,
+				36F9E0A93779408988227E12 /* TimeBlock.swift in Sources */,
+				79EA1E6A9A0C4DC49A8B6076 /* FocusSession.swift in Sources */,
+				30910629AF9C4AB592C3C97C /* MindsetEvent.swift in Sources */,
+				60B3478E495C42B4A8EB5B0C /* GrowthInsight.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F39C1A342EEAC7AF00F9A6D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F39C1A632EEAE6EF00F9A6D8 /* iAllyIntents.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F39C1A3F2EEAC7B000F9A6D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F35084342EE51F3B001682A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F35084222EE51F39001682A0 /* iAlly */;
+			targetProxy = F35084332EE51F3B001682A0 /* PBXContainerItemProxy */;
+		};
+		F350843E2EE51F3B001682A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F35084222EE51F39001682A0 /* iAlly */;
+			targetProxy = F350843D2EE51F3B001682A0 /* PBXContainerItemProxy */;
+		};
+		F39FD9762F593B030096FB80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F39C1A372EEAC7AF00F9A6D8 /* iAllyIntents */;
+			targetProxy = F39FD9752F593B030096FB80 /* PBXContainerItemProxy */;
+		};
+		F39FD97A2F593B0A0096FB80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F39C19F92EEA8EF000F9A6D8 /* iAllyWidgetExtension */;
+			targetProxy = F39FD9792F593B0A0096FB80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F35084442EE51F3B001682A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F35084452EE51F3B001682A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F35084472EE51F3B001682A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iAlly/iAlly.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = JHF4DP8RW8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iAlly/Info.plist;
+				INFOPLIST_KEY_NSSiriUsageDescription = "iAlly uses Siri to help you quickly add tasks using voice commands.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAlly";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F35084482EE51F3B001682A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iAlly/iAlly.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = JHF4DP8RW8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iAlly/Info.plist;
+				INFOPLIST_KEY_NSSiriUsageDescription = "iAlly uses Siri to help you quickly add tasks using voice commands.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAlly";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F350844A2EE51F3B001682A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAllyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iAlly.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iAlly";
+			};
+			name = Debug;
+		};
+		F350844B2EE51F3B001682A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAllyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iAlly.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iAlly";
+			};
+			name = Release;
+		};
+		F350844D2EE51F3B001682A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAllyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iAlly;
+			};
+			name = Debug;
+		};
+		F350844E2EE51F3B001682A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAllyUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iAlly;
+			};
+			name = Release;
+		};
+		F39C1A112EEA8EF200F9A6D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = iAllyWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iAllyWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iAllyWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAlly.iAllyWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F39C1A122EEA8EF200F9A6D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = iAllyWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iAllyWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iAllyWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAlly.iAllyWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F39C1A542EEAC7B000F9A6D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				"INFOPLIST_FILE[sdk=*]" = "";
+				INFOPLIST_KEY_CFBundleDisplayName = iAllyIntentsUI;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAlly.iAllyIntentsUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F39C1A552EEAC7B000F9A6D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_CFBundleDisplayName = iAllyIntentsUI;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAlly.iAllyIntentsUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F39C1A582EEAC7B000F9A6D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = iAllyIntents/iAllyIntents.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = iAllyIntents/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iAllyIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAlly.iAllyIntents";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F39C1A592EEAC7B000F9A6D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = iAllyIntents/iAllyIntents.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = RSN4396ZH3;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = iAllyIntents/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iAllyIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Irigam-Innovations.iAlly.iAllyIntents";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F350841E2EE51F39001682A0 /* Build configuration list for PBXProject "iAlly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F35084442EE51F3B001682A0 /* Debug */,
+				F35084452EE51F3B001682A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F35084462EE51F3B001682A0 /* Build configuration list for PBXNativeTarget "iAlly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F35084472EE51F3B001682A0 /* Debug */,
+				F35084482EE51F3B001682A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F35084492EE51F3B001682A0 /* Build configuration list for PBXNativeTarget "iAllyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F350844A2EE51F3B001682A0 /* Debug */,
+				F350844B2EE51F3B001682A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F350844C2EE51F3B001682A0 /* Build configuration list for PBXNativeTarget "iAllyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F350844D2EE51F3B001682A0 /* Debug */,
+				F350844E2EE51F3B001682A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F39C1A102EEA8EF200F9A6D8 /* Build configuration list for PBXNativeTarget "iAllyWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F39C1A112EEA8EF200F9A6D8 /* Debug */,
+				F39C1A122EEA8EF200F9A6D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F39C1A532EEAC7B000F9A6D8 /* Build configuration list for PBXNativeTarget "iAllyIntentsUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F39C1A542EEAC7B000F9A6D8 /* Debug */,
+				F39C1A552EEAC7B000F9A6D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F39C1A572EEAC7B000F9A6D8 /* Build configuration list for PBXNativeTarget "iAllyIntents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F39C1A582EEAC7B000F9A6D8 /* Debug */,
+				F39C1A592EEAC7B000F9A6D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F350841B2EE51F39001682A0 /* Project object */;
+}

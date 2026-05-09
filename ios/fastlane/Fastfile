@@ -1,0 +1,316 @@
+# Fastlane Configuration for iAlly
+# This file automates iOS app building, code signing, and deployment
+
+default_platform(:ios)
+
+platform :ios do
+  # ========== Configuration ==========
+  
+  before_all do
+    ensure_git_status_clean unless ENV["CI"]
+    setup_ci if ENV["CI"]
+  end
+
+  # ========== Testing Lanes ==========
+  
+  desc "Run all unit tests"
+  lane :unit_tests do
+    run_tests(
+      workspace: "iAlly.xcworkspace",
+      scheme: "iAlly",
+      only_testing: ["iAllyTests"],
+      devices: ["iPhone 17 Pro"],
+      result_bundle: true,
+      output_directory: "./fastlane/test_output",
+      clean: true
+    )
+  end
+
+  desc "Run all UI tests"
+  lane :ui_tests do
+    run_tests(
+      workspace: "iAlly.xcworkspace",
+      scheme: "iAlly",
+      only_testing: ["iAllyUITests"],
+      devices: ["iPhone 17 Pro"],
+      result_bundle: true,
+      output_directory: "./fastlane/test_output",
+      clean: false
+    )
+  end
+
+  desc "Run all tests (Unit + UI)"
+  lane :test do
+    unit_tests
+    ui_tests
+  end
+
+  # ========== Version Management ==========
+  
+  desc "Get current version and build number"
+  lane :get_version_info do
+    version = get_version_number(
+      xcodeproj: "iAlly/iAlly.xcodeproj",
+      target: "iAlly"
+    )
+    build_number = get_build_number(
+      xcodeproj: "iAlly/iAlly.xcodeproj"
+    )
+    
+    UI.success("Current version: #{version} (#{build_number})")
+    { version: version, build: build_number }
+  end
+
+  desc "Bump patch version (e.g., 1.0.0 -> 1.0.1)"
+  lane :bump_patch do
+    increment_version_number(
+      bump_type: "patch",
+      xcodeproj: "iAlly/iAlly.xcodeproj"
+    )
+    increment_build_number(
+      xcodeproj: "iAlly/iAlly.xcodeproj"
+    )
+    get_version_info
+  end
+
+  desc "Bump minor version (e.g., 1.0.0 -> 1.1.0)"
+  lane :bump_minor do
+    increment_version_number(
+      bump_type: "minor",
+      xcodeproj: "iAlly/iAlly.xcodeproj"
+    )
+    increment_build_number(
+      xcodeproj: "iAlly/iAlly.xcodeproj",
+      build_number: 1 # Reset build number for new minor version
+    )
+    get_version_info
+  end
+
+  desc "Bump major version (e.g., 1.0.0 -> 2.0.0)"
+  lane :bump_major do
+    increment_version_number(
+      bump_type: "major",
+      xcodeproj: "iAlly/iAlly.xcodeproj"
+    )
+    increment_build_number(
+      xcodeproj: "iAlly/iAlly.xcodeproj",
+      build_number: 1 # Reset build number for new major version
+    )
+    get_version_info
+  end
+
+  desc "Set specific build number"
+  lane :set_build_number do |options|
+    build_number = options[:number] || prompt(text: "Enter build number: ")
+    increment_build_number(
+      xcodeproj: "iAlly/iAlly.xcodeproj",
+      build_number: build_number
+    )
+    get_version_info
+  end
+
+  # ========== Build Lanes ==========
+  
+  desc "Build the app for testing"
+  lane :build_for_testing do
+    build_app(
+      workspace: "iAlly.xcworkspace",
+      scheme: "iAlly",
+      configuration: "Debug",
+      skip_archive: true,
+      skip_codesigning: false,
+      derived_data_path: "./DerivedData"
+    )
+  end
+
+  desc "Build and archive the app for release"
+  lane :build_release do
+    # Increment build number
+    increment_build_number(
+      xcodeproj: "iAlly/iAlly.xcodeproj"
+    )
+    
+    version_info = get_version_info
+    
+    # Build the app
+    build_app(
+      workspace: "iAlly.xcworkspace",
+      scheme: "iAlly",
+      configuration: "Release",
+      output_directory: "./builds",
+      output_name: "iAlly-#{version_info[:version]}-#{version_info[:build]}.ipa",
+      export_method: "app-store",
+      export_options: {
+        provisioningProfiles: {
+          "com.irigam.iAlly" => "iAlly AppStore"
+        }
+      },
+      clean: true
+    )
+    
+    UI.success("Built version #{version_info[:version]} (#{version_info[:build]})")
+  end
+
+  # ========== TestFlight Deployment ==========
+  
+  desc "Upload to TestFlight (internal testing)"
+  lane :beta do
+    # Ensure we're on a clean branch
+    ensure_git_branch(branch: 'main')
+    
+    # Run tests first
+    test
+    
+    # Build release
+    build_release
+    
+    # Upload to TestFlight
+    upload_to_testflight(
+      skip_waiting_for_build_processing: false,
+      skip_submission: true,
+      distribute_external: false,
+      notify_external_testers: false,
+      changelog: "Internal beta build for testing"
+    )
+    
+    # Commit version bump
+    version_info = get_version_info
+    git_commit(
+      path: ["iAlly/iAlly.xcodeproj/project.pbxproj"],
+      message: "Bump version to #{version_info[:version]} (#{version_info[:build]}) [skip ci]"
+    )
+    
+    push_to_git_remote
+    
+    UI.success("Successfully uploaded to TestFlight! 🚀")
+  end
+
+  desc "Upload to TestFlight for external testing"
+  lane :beta_external do
+    # Get changelog from user or git commits
+    changelog = prompt(
+      text: "Enter release notes for testers (or leave blank to use git log): ",
+      multi_line_end_keyword: "END"
+    )
+    
+    if changelog.strip.empty?
+      changelog = changelog_from_git_commits(
+        between: [last_git_tag, "HEAD"],
+        pretty: "- %s"
+      )
+    end
+    
+    # Build release
+    build_release
+    
+    # Upload to TestFlight
+    upload_to_testflight(
+      skip_waiting_for_build_processing: false,
+      skip_submission: false,
+      distribute_external: true,
+      notify_external_testers: true,
+      changelog: changelog,
+      groups: ["External Testers"]
+    )
+    
+    UI.success("Successfully distributed to external testers! 🎉")
+  end
+
+  # ========== App Store Release ==========
+  
+  desc "Create a new release and submit to App Store"
+  lane :release do
+    # Ensure we're on main and clean
+    ensure_git_branch(branch: 'main')
+    ensure_git_status_clean
+    
+    # Run all tests
+    test
+    
+    # Get version info
+    version_info = get_version_info
+    
+    # Build release
+    build_release
+    
+    # Get release notes
+    release_notes = prompt(
+      text: "Enter App Store release notes: ",
+      multi_line_end_keyword: "END"
+    )
+    
+    # Upload to App Store Connect
+    upload_to_app_store(
+      force: true,
+      skip_screenshots: true,
+      skip_metadata: false,
+      submit_for_review: false, # Manual submission for safety
+      automatic_release: false,
+      precheck_include_in_app_purchases: false,
+      submission_information: {
+        add_id_info_uses_idfa: false
+      }
+    )
+    
+    # Create git tag
+    add_git_tag(
+      tag: "v#{version_info[:version]}",
+      message: "Release v#{version_info[:version]}\n\n#{release_notes}"
+    )
+    
+    # Commit and push
+    git_commit(
+      path: ["iAlly/iAlly.xcodeproj/project.pbxproj"],
+      message: "Release v#{version_info[:version]} (#{version_info[:build]})"
+    )
+    
+    push_to_git_remote(tags: true)
+    
+    UI.success("Successfully created release v#{version_info[:version]}! 🎊")
+    UI.important("Don't forget to manually submit for review in App Store Connect")
+  end
+
+  # ========== Code Signing ==========
+  
+  desc "Setup code signing with match"
+  lane :setup_signing do
+    match(
+      type: "appstore",
+      readonly: true
+    )
+  end
+
+  desc "Register new devices for development"
+  lane :register_devices do
+    register_devices(
+      devices_file: "./fastlane/devices.txt"
+    )
+    match(type: "development", force_for_new_devices: true)
+  end
+
+  # ========== Cleanup ==========
+  
+  desc "Clean build artifacts and derived data"
+  lane :clean do
+    clear_derived_data
+    sh("rm", "-rf", "../builds")
+    sh("rm", "-rf", "./test_output")
+    UI.success("Cleaned all build artifacts")
+  end
+
+  # ========== Error Handling ==========
+  
+  error do |lane, exception|
+    UI.error("Error in lane #{lane}: #{exception.message}")
+    
+    # Notify on Slack if configured
+    # slack(
+    #   message: "Build failed in lane #{lane}",
+    #   success: false
+    # )
+  end
+
+  after_all do |lane|
+    UI.success("Successfully completed lane: #{lane}")
+  end
+end

@@ -1,0 +1,225 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    name: Version Check
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+      build: ${{ steps.get_version.outputs.build }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get version info
+        id: get_version
+        run: |
+          VERSION=$(grep -m 1 "MARKETING_VERSION = " iAlly/iAlly.xcodeproj/project.pbxproj | sed 's/.*MARKETING_VERSION = \([0-9.]*\);/\1/')
+          BUILD=$(grep -m 1 "CURRENT_PROJECT_VERSION = " iAlly/iAlly.xcodeproj/project.pbxproj | sed 's/.*CURRENT_PROJECT_VERSION = \([0-9]*\);/\1/')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "build=$BUILD" >> $GITHUB_OUTPUT
+          echo "📦 Building version $VERSION ($BUILD)"
+
+  unit-tests:
+    needs: version-check
+    runs-on: macos-15
+    name: Unit Tests (iPhone 16 Pro)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Environment diagnostics
+        run: |
+          set -euo pipefail
+          xcodebuild -version
+          xcrun --version || true
+          xcrun simctl list devices | sed -n '1,120p'
+          xcrun simctl list runtimes | sed -n '1,120p'
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      - name: Install xcpretty
+        run: gem install xcpretty --no-document
+      - name: Preboot simulator (best-effort)
+        run: |
+          xcrun simctl boot "iPhone 16 Pro" || true
+          xcrun simctl bootstatus "iPhone 16 Pro" -b || true
+      - name: Resolve destination dynamically
+        id: dest_unit
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Find first available iPhone with iOS 18
+          DEST=$(xcrun simctl list devices --json | jq -r '
+            [ .devices | to_entries[] | select(.key | test("iOS-18")) | .value[] | select(.isAvailable == true and (.name | test("iPhone"))) ][0].name // empty')
+          if [[ -n "$DEST" ]]; then
+            DEST="platform=iOS Simulator,name=$DEST"
+          else
+            # Fallback: any available iPhone
+            DEST=$(xcrun simctl list devices available | awk 'BEGIN{FS=" \("} /iPhone/ {sub(/^[ \t]*/, "", $0); print "platform=iOS Simulator,name=" $1; exit}') || true
+          fi
+          echo "Chosen DEST=${DEST}"
+          echo "dest=${DEST}" >> "$GITHUB_OUTPUT"
+      - name: Build & test (Unit)
+        run: |
+          set -euo pipefail
+          xcodebuild -workspace iAlly.xcworkspace -scheme iAlly -sdk iphonesimulator \
+            -destination "${{ steps.dest_unit.outputs.dest }}" \
+            -only-testing iAllyTests \
+            -parallel-testing-enabled NO \
+            -resultBundlePath "TestResults-Unit.xcresult" \
+            test | tee "unit_xcodebuild.log" | xcpretty --simple
+      - name: Summarize Unit results
+        if: always()
+        run: |
+          set -euo pipefail
+          if xcrun xcresulttool get --format json --path "TestResults-Unit.xcresult" > tmp_unit.json 2>/dev/null; then
+            :
+          elif xcrun xcresulttool get --legacy --format json --path "TestResults-Unit.xcresult" > tmp_unit.json 2>/dev/null; then
+            :
+          else
+            echo '{}' > tmp_unit.json
+          fi
+          jq '{summary: (.actions._result.summary // null), failures: (.issues.testFailureSummaries // [])}' tmp_unit.json > "unit_summary.json"
+          jq -r '
+            (.issues.testFailureSummaries // [])[] |
+            "FAIL: " + (.testCaseName // "<unknown>") + " - " + (.message // "")
+          ' tmp_unit.json > "unit_failures.txt" || echo "(no failures)" > "unit_failures.txt"
+      - name: Upload Unit Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-logs
+          path: |
+            unit_xcodebuild.log
+            TestResults-Unit.xcresult
+            unit_summary.json
+            unit_failures.txt
+
+  ui-tests:
+    runs-on: macos-15
+    name: UI Tests (iPhone 16 Pro)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Environment diagnostics
+        run: |
+          set -euo pipefail
+          xcodebuild -version
+          xcrun --version || true
+          xcrun simctl list devices | sed -n '1,120p'
+          xcrun simctl list runtimes | sed -n '1,120p'
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+      - name: Install xcpretty
+        run: gem install xcpretty --no-document
+      - name: Preboot simulator (best-effort)
+        run: |
+          xcrun simctl boot "iPhone 16 Pro" || true
+          xcrun simctl bootstatus "iPhone 16 Pro" -b || true
+      - name: Resolve destination dynamically
+        id: dest_ui
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Find first available iPhone with iOS 18
+          DEST=$(xcrun simctl list devices --json | jq -r '
+            [ .devices | to_entries[] | select(.key | test("iOS-18")) | .value[] | select(.isAvailable == true and (.name | test("iPhone"))) ][0].name // empty')
+          if [[ -n "$DEST" ]]; then
+            DEST="platform=iOS Simulator,name=$DEST"
+          else
+            # Fallback: any available iPhone
+            DEST=$(xcrun simctl list devices available | awk 'BEGIN{FS=" \("} /iPhone/ {sub(/^[ \t]*/, "", $0); print "platform=iOS Simulator,name=" $1; exit}') || true
+          fi
+          echo "Chosen DEST=${DEST}"
+          echo "dest=${DEST}" >> "$GITHUB_OUTPUT"
+      - name: Build & test (UI)
+        run: |
+          set -euo pipefail
+          xcodebuild -workspace iAlly.xcworkspace -scheme iAlly -sdk iphonesimulator \
+            -destination "${{ steps.dest_ui.outputs.dest }}" \
+            -only-testing iAllyUITests \
+            -parallel-testing-enabled NO \
+            -resultBundlePath "TestResults-UI.xcresult" \
+            test | tee "ui_xcodebuild.log" | xcpretty --simple
+      - name: Capture UI log tail
+        if: always()
+        run: |
+          set -euo pipefail
+          tail -n 300 "ui_xcodebuild.log" > "ui_error_tail.txt" || echo "(no tail)" > "ui_error_tail.txt"
+      - name: Summarize UI results
+        if: always()
+        run: |
+          set -euo pipefail
+          if xcrun xcresulttool get --format json --path "TestResults-UI.xcresult" > tmp_ui.json 2>/dev/null; then
+            :
+          elif xcrun xcresulttool get --legacy --format json --path "TestResults-UI.xcresult" > tmp_ui.json 2>/dev/null; then
+            :
+          else
+            echo '{}' > tmp_ui.json
+          fi
+          jq '{summary: (.actions._result.summary // null), failures: (.issues.testFailureSummaries // [])}' tmp_ui.json > "ui_summary.json"
+          jq -r '
+            (.issues.testFailureSummaries // [])[] |
+            "FAIL: " + (.testCaseName // "<unknown>") + " - " + (.message // "")
+          ' tmp_ui.json > "ui_failures.txt" || echo "(no failures)" > "ui_failures.txt"
+      - name: Upload UI Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-logs
+          path: |
+            ui_xcodebuild.log
+            TestResults-UI.xcresult
+            ui_summary.json
+            ui_failures.txt
+            ui_error_tail.txt
+
+  ci-summary:
+    needs: [version-check, unit-tests, ui-tests]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Generate summary
+        run: |
+          set -euo pipefail
+          echo "## 🏗️ CI Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ needs.version-check.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Build:** ${{ needs.version-check.outputs.build }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "CI Test Summary" > summary.txt
+          echo "================" >> summary.txt
+          echo "Version: ${{ needs.version-check.outputs.version }} (Build ${{ needs.version-check.outputs.build }})" >> summary.txt
+          echo >> summary.txt
+          if [ -f artifacts/unit_summary.json ]; then
+            echo "Unit Tests:" >> summary.txt
+            cat artifacts/unit_summary.json >> summary.txt
+            echo >> summary.txt
+          fi
+          if [ -f artifacts/ui_summary.json ]; then
+            echo "UI Tests:" >> summary.txt
+            cat artifacts/ui_summary.json >> summary.txt
+            echo >> summary.txt
+          fi
+          echo "Failures:" >> summary.txt
+          if [ -f artifacts/unit_failures.txt ]; then
+            echo "Unit:" >> summary.txt
+            cat artifacts/unit_failures.txt >> summary.txt
+            echo >> summary.txt
+          fi
+          if [ -f artifacts/ui_failures.txt ]; then
+            echo "UI:" >> summary.txt
+            cat artifacts/ui_failures.txt >> summary.txt
+          fi
+      - name: Upload summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-summary
+          path: summary.txt

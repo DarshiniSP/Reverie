@@ -1,0 +1,19 @@
+# Gemfile
+source "https://rubygems.org"
+
+# Fastlane for iOS automation
+gem "fastlane", "~> 2.219"
+
+# Fastlane plugins
+plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
+eval_gemfile(plugins_path) if File.exist?(plugins_path)
+
+# Code coverage
+gem "slather", "~> 2.8"
+
+# Testing utilities
+gem "xcpretty", "~> 0.3.0"
+gem "xcpretty-json-formatter"
+
+# Code quality
+gem "rubocop", "~> 1.60", require: false
