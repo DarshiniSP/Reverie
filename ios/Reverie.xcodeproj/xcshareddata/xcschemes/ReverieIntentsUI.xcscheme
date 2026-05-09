@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "2620"
-   wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -16,23 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F39C19F92EEA8EF000F9A6D8"
-               BuildableName = "iAllyWidgetExtension.appex"
-               BlueprintName = "iAllyWidgetExtension"
-               ReferencedContainer = "container:Reverie.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F35084222EE51F39001682A0"
-               BuildableName = "iAlly.app"
-               BlueprintName = "iAlly"
+               BlueprintIdentifier = "F39C1A422EEAC7B000F9A6D8"
+               BuildableName = "ReverieIntentsUI.appex"
+               BlueprintName = "ReverieIntentsUI"
                ReferencedContainer = "container:Reverie.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -57,33 +42,6 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F35084222EE51F39001682A0"
-            BuildableName = "iAlly.app"
-            BlueprintName = "iAlly"
-            ReferencedContainer = "container:Reverie.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "_XCWidgetKind"
-            value = ""
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "_XCWidgetDefaultView"
-            value = "timeline"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "_XCWidgetFamily"
-            value = "systemMedium"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -93,16 +51,15 @@
       debugDocumentVersioning = "YES"
       askForAppToLaunch = "Yes"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F35084222EE51F39001682A0"
-            BuildableName = "iAlly.app"
-            BlueprintName = "iAlly"
+            BlueprintIdentifier = "F39C1A422EEAC7B000F9A6D8"
+            BuildableName = "ReverieIntentsUI.appex"
+            BlueprintName = "ReverieIntentsUI"
             ReferencedContainer = "container:Reverie.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

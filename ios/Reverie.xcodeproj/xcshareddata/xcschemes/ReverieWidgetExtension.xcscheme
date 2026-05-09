@@ -16,9 +16,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F39C1A372EEAC7AF00F9A6D8"
-               BuildableName = "iAllyIntents.appex"
-               BlueprintName = "iAllyIntents"
+               BlueprintIdentifier = "F39C19F92EEA8EF000F9A6D8"
+               BuildableName = "ReverieWidgetExtension.appex"
+               BlueprintName = "ReverieWidgetExtension"
                ReferencedContainer = "container:Reverie.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,8 +31,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F35084222EE51F39001682A0"
-               BuildableName = "iAlly.app"
-               BlueprintName = "iAlly"
+               BuildableName = "Reverie.app"
+               BlueprintName = "Reverie"
                ReferencedContainer = "container:Reverie.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -62,11 +62,28 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F35084222EE51F39001682A0"
-            BuildableName = "iAlly.app"
-            BlueprintName = "iAlly"
+            BuildableName = "Reverie.app"
+            BlueprintName = "Reverie"
             ReferencedContainer = "container:Reverie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "_XCWidgetKind"
+            value = ""
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "_XCWidgetDefaultView"
+            value = "timeline"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "_XCWidgetFamily"
+            value = "systemMedium"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -81,8 +98,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F35084222EE51F39001682A0"
-            BuildableName = "iAlly.app"
-            BlueprintName = "iAlly"
+            BuildableName = "Reverie.app"
+            BlueprintName = "Reverie"
             ReferencedContainer = "container:Reverie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

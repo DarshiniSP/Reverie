@@ -10,8 +10,9 @@ import SwiftData
 import UserNotifications
 import BackgroundTasks
 
+
 @main
-struct iAllyApp: App {
+struct ReverieApp: App {
     // P4-A: UIApplicationDelegate for APNs token registration and silent push handling
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 

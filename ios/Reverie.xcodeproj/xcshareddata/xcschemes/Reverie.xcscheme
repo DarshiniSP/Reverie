@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F35084222EE51F39001682A0"
-               BuildableName = "iAlly.app"
-               BlueprintName = "iAlly"
+               BuildableName = "Reverie.app"
+               BlueprintName = "Reverie"
                ReferencedContainer = "container:Reverie.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -36,8 +36,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F35084312EE51F3B001682A0"
-               BuildableName = "iAllyTests.xctest"
-               BlueprintName = "iAllyTests"
+               BuildableName = "ReverieTests.xctest"
+               BlueprintName = "ReverieTests"
                ReferencedContainer = "container:Reverie.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -46,8 +46,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F350843B2EE51F3B001682A0"
-               BuildableName = "iAllyUITests.xctest"
-               BlueprintName = "iAllyUITests"
+               BuildableName = "ReverieUITests.xctest"
+               BlueprintName = "ReverieUITests"
                ReferencedContainer = "container:Reverie.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -68,8 +68,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F35084222EE51F39001682A0"
-            BuildableName = "iAlly.app"
-            BlueprintName = "iAlly"
+            BuildableName = "Reverie.app"
+            BlueprintName = "Reverie"
             ReferencedContainer = "container:Reverie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -85,8 +85,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F35084222EE51F39001682A0"
-            BuildableName = "iAlly.app"
-            BlueprintName = "iAlly"
+            BuildableName = "Reverie.app"
+            BlueprintName = "Reverie"
             ReferencedContainer = "container:Reverie.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
