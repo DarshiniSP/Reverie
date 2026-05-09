@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "2620"
+   wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,10 +16,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F39C1A422EEAC7B000F9A6D8"
-               BuildableName = "iAllyIntentsUI.appex"
-               BlueprintName = "iAllyIntentsUI"
-               ReferencedContainer = "container:iAlly.xcodeproj">
+               BlueprintIdentifier = "F39C1A372EEAC7AF00F9A6D8"
+               BuildableName = "iAllyIntents.appex"
+               BlueprintName = "iAllyIntents"
+               ReferencedContainer = "container:Reverie.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F35084222EE51F39001682A0"
+               BuildableName = "iAlly.app"
+               BlueprintName = "iAlly"
+               ReferencedContainer = "container:Reverie.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,6 +57,16 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F35084222EE51F39001682A0"
+            BuildableName = "iAlly.app"
+            BlueprintName = "iAlly"
+            ReferencedContainer = "container:Reverie.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -51,15 +76,16 @@
       debugDocumentVersioning = "YES"
       askForAppToLaunch = "Yes"
       launchAutomaticallySubstyle = "2">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F39C1A422EEAC7B000F9A6D8"
-            BuildableName = "iAllyIntentsUI.appex"
-            BlueprintName = "iAllyIntentsUI"
-            ReferencedContainer = "container:iAlly.xcodeproj">
+            BlueprintIdentifier = "F35084222EE51F39001682A0"
+            BuildableName = "iAlly.app"
+            BlueprintName = "iAlly"
+            ReferencedContainer = "container:Reverie.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
