@@ -63,12 +63,6 @@ Users cannot consistently self-censor when talking to an AI. Telling someone "do
 ### 4. Multi-provider inference routing
 Single-provider dependency creates fragility: rate limits, outages, and model deprecations are real risks. Supporting four providers with graceful fallback increases resilience and gives users choice based on cost or preference. The trade-off is a more complex inference layer and four separate integration surfaces to maintain.
 
-### 5. Local-first data model
-Personal productivity data is inherently sensitive. CloudKit sync is available but opt-in. The trade-off is that cross-device syncing requires the user to enable it explicitly rather than being seamless by default.
-
-### 6. TaskWork as the primary entity name instead of Task
-Swift's structured concurrency uses Task as a first-class type in the standard library. Naming the data model entity TaskWork avoids namespace collision. No clean alternative given the language constraints.
-
 ## Shortcomings
 
 ### 1. No server-side infrastructure
