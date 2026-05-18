@@ -55,10 +55,10 @@ Each layer has a clear responsibility. SwiftData manages persistence. The servic
 User-defined categories sound more flexible but impose a hidden cost: users have to decide what categories matter before they start, which is cognitively expensive and leads to inconsistent organisation over time. Fixed domains remove that friction and make domain-level intelligence meaningful. You can only detect that Health has gone quiet if Health is a defined, consistent category. The trade-off is reduced flexibility for users with unusual life structures.
 
 ### 2. Resilience metrics over streak tracking
-Standard streak tracking penalises recovery. A user who breaks a 10-day streak and rebuilds for 30 days should feel progress, not loss. The Growth Mindset Engine separates currentStreak from recoveryCount, streakBreakCount, and resilienceScore, and weights recovery as a positive signal. The trade-off is more complex metrics storage and a less immediately legible interface than a streak counter.
+Standard streak tracking penalises recovery. A user who breaks a 10-day streak and rebuilds for 30 days should feel progress, not loss. The Growth Mindset Engine separates currentStreak from recoveryCount, streakBreakCount, and resilienceScore, and weights recovery as a positive signal.The trade-off is that tracking three separate numbers (streak, recovery count, resilience score) instead of one makes the interface harder to read at a glance. A plain streak counter tells you one thing immediately. This tells you something more accurate, but you have to look at it for a moment longer to understand where you stand.
 
 ### 3. Structural privacy vs. user self-censorship
-Users cannot consistently self-censor when talking to an AI. Telling someone "do not write personal details" places a burden the system should carry. The PII scrubber runs before every inference call and removes sensitive identifiers automatically. This adds a small latency overhead on every message but is a non-negotiable design principle.
+Users cannot consistently self-censor when talking to an AI. Telling someone "do not write personal details" places a burden the system should carry. The PII scrubber runs before every inference call and removes sensitive identifiers automatically. This adds a small latency overhead on every message but is a non-negotiable design principle. For users who are still skeptical: the scrubber runs entirely on-device, before any network call is made. Nothing reaches the inference provider until it has already passed through the filter. The inference log in the developer settings shows exactly what was sent, so you can verify for yourself that no raw personal data left the device.
 
 ### 4. Multi-provider inference routing
 Single-provider dependency creates fragility: rate limits, outages, and model deprecations are real risks. Supporting four providers with graceful fallback increases resilience and gives users choice based on cost or preference. The trade-off is a more complex inference layer and four separate integration surfaces to maintain.
@@ -66,13 +66,13 @@ Single-provider dependency creates fragility: rate limits, outages, and model de
 ## Shortcomings
 
 ### 1. No server-side infrastructure
-The proactive engine's nudge thresholds are static, calibrated by hand rather than learned from what actually produces behaviour change. There is no way to know whether a given nudge type is useful across users, because there is no aggregation layer. Improving calibration requires rebuilding it on a backend.
+The proactive engine decides when to nudge you (for example, reminding you that a goal has gone untouched for several days) based on fixed numbers that were set by hand during development. There is no way to know whether those numbers are actually right for most people, because the app does not collect or compare data across users. If the thresholds are off, the only way to fix them is to rewrite that part of the system with a backend that can learn from real usage patterns.
 
 ### 2. Offline AI fallback is limited
 When network is unavailable, Lumina falls back to pre-composed responses rather than on-device inference. Local semantic search over notes works offline, but full conversational responses and briefing generation require connectivity.
 
 ### 3. Nudge threshold calibration is static and uniform
-Each nudge type has hardcoded thresholds (for example, "goal drift after N days"). These should adapt per user based on behavioral feedback. If a user consistently dismisses goal drift nudges, the threshold should increase. Currently they do not.
+Each nudge type has a fixed trigger point (for example, flag a goal as drifting after a set number of inactive days). Ideally, that number would adjust per user over time. If you consistently ignore a certain type of nudge, the app should learn that and back off. Right now it does not. The thresholds are the same for everyone and do not change based on your behaviour.
 
 ## Future Directions
 
