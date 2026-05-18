@@ -74,12 +74,6 @@ When network is unavailable, Lumina falls back to pre-composed responses rather 
 ### 3. Nudge threshold calibration is static and uniform
 Each nudge type has hardcoded thresholds (for example, "goal drift after N days"). These should adapt per user based on behavioral feedback. If a user consistently dismisses goal drift nudges, the threshold should increase. Currently they do not.
 
-### 4. Offline sync queue is disabled in the current build
-The OfflineOperationQueue architecture for handling CloudKit sync conflicts exists but is not active. Editing data across devices in poor connectivity may produce conflicts.
-
-### 5. No collaborative or social layer
-Accountability partners, shared journeys, and social commitment mechanisms are well-documented drivers of follow-through. Reverie is entirely solo.
-
 ## Future Directions
 
 ### 6. On-device inference
