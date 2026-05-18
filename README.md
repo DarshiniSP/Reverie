@@ -76,22 +76,19 @@ Each nudge type has hardcoded thresholds (for example, "goal drift after N days"
 
 ## Future Directions
 
-### 6. On-device inference
-As Apple Silicon in iOS matures, moving inference fully on-device would eliminate network dependency, reduce latency, and strengthen the privacy model with no user-facing trade-off.
-
-### 7. Adaptive nudge calibration
+### 1. Adaptive nudge calibration
 Nudge thresholds should learn from user behaviour, tracking which nudges get acted on and which get dismissed, and adjust sensitivity per user over time. This requires a feedback signal the current build does not have.
 
-### 8. Shared accountability mode
+### 2. Shared accountability mode
 An opt-in feature where users share selected journey progress with a trusted person, a mentor or accountability partner, without exposing the full task log. Privacy-preserving progress sharing rather than full transparency.
 
-### 9. HealthKit integration
+### 3. HealthKit integration
 Pulling physiological signals (sleep, activity, HRV) into the energy pattern analysis would ground scheduling recommendations in actual physical state, not just inferred patterns from task history.
 
-### 10. Backend analytics infrastructure
+### 4. Backend analytics infrastructure
 A server layer would enable nudge threshold optimisation across users, model quality evaluation, and longitudinal product analytics, while keeping all personal data local on device.
 
-### 11. ML-based completion prediction
+### 5. ML-based completion prediction
 The current prediction logic is rule-based (task size, due date presence, historical category rates). A trained model on longitudinal user behaviour would produce more accurate and personalised estimates.
 
 ## Tech Stack
