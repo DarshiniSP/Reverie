@@ -43,9 +43,6 @@ Each layer has a clear responsibility. SwiftData manages persistence. The servic
 - Growth Mindset Engine: behavioral event recording, 8 insight types with confidence scores, resilience and recovery tracked separately from streaks
 - Complex recurrence: "every 3 days," "third Friday of the month," "weekdays only," per-instance modifications, exception dates
 - 3-layer PII scrubbing: automatic before every inference call, jurisdiction-aware, user-defined custom patterns
-- Local-first with optional CloudKit sync: all data on device by default
-- Biometric lock: Face ID / Touch ID with 1-hour idle re-lock
-- Calendar sync: EventKit integration
 - Data export: full personal data ownership
 - 189 UI test scenarios across 50+ automated flows
 
