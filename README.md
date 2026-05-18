@@ -14,10 +14,10 @@ Reverie is a native iOS app built around three interconnected layers:
 An 8-domain life framework (Health, Career, Relationships, Learning, Creativity, Finance, Home, Personal) with four entity types: Plans (domain-level buckets that group related goals and give your work a sense of direction), Journeys (time-bound goals broken into milestones, designed for things that take months rather than days), Routines (recurring practices that auto-generate tasks on a schedule so you never have to re-enter them), and Tasks (individual work units that carry metadata like priority, energy cost, size, and due date). Tasks can exist independently or as part of larger structures like routines, journeys, and plans, allowing the system to understand both isolated actions and long-term behavioural patterns across life domains.
 
 ### Intelligence:
-Lumina, an AI companion that runs proactively in the background every 6 hours. It detects long-term patterns in your behaviour that might otherwise go unnoticed, and surfaces personalised nudges and a daily briefing without any user action required. It also supports conversational task capture and semantic search over your past notes.
+Lumina is an AI companion that runs periodically in the background. It identifies behavioural patterns across your activity that may not be immediately visible, and generates personalised nudges and a daily briefing. It also supports conversational task capture and semantic search across past notes.
 
 ### Reflection:
-A Growth Mindset Engine that measures resilience and recovery, not just streaks. It records behavioral events (missed, rescheduled, recovered, abandoned), generates confidence-scored insights from 30-day histories, and surfaces patterns in how you actually work, not how you intended to work.
+A Growth Mindset Engine that focuses on resilience and recovery rather than streaks. It logs behavioural events such as missed, rescheduled, recovered, and abandoned actions, and generates confidence-scored insights based on 30-day behavioural history. It surfaces patterns in how you actually work, rather than how you intended to work.
 
 Reverie is built on the idea that people often struggle not because they lack motivation, but because they lack clear visibility into their own behaviour.
 
@@ -25,31 +25,31 @@ Reverie is built on the idea that people often struggle not because they lack mo
 
 ## System Design
 
-Reverie is built around a local-first data model with 24 SwiftData entities as its foundation. Everything lives on device by default: Plans, Journeys, Milestones, Routines, Tasks, behavioral event logs, conversation history, and AI-generated insights. iCloud sync via CloudKit is available but opt-in.
+Reverie is built on a local-first data model using 24 SwiftData entities as its foundation. All core data is stored on device by default, including Plans, Journeys, Milestones, Routines, Tasks, behavioural event logs, conversation history, and AI-generated insights. CloudKit sync is available as an optional extension for users who want cross-device continuity.
 
-Above that sits a service layer of 40+ specialised components, each with a single responsibility. The GrowthMindsetService records behavioral events (missed, recovered, rescheduled, abandoned) and generates eight types of confidence-scored insights from 30-day histories. The LifePatternAnalyzer tracks task completion rates by hour of day to identify energy peaks and valleys. The PIIScrubber runs on every outgoing message, stripping personal identifiers across three passes before any data reaches an external API.
+The system is organised into a service-oriented architecture with over 40 specialised components, each responsible for a single domain of logic. The GrowthMindsetService processes behavioural events such as missed, rescheduled, recovered, and abandoned actions, and computes confidence-scored insights from rolling 30-day histories. The LifePatternAnalyzer aggregates completion data by time of day to identify behavioural energy patterns. The PIIScrubber operates as a mandatory pre-inference pipeline that removes sensitive identifiers through multiple passes before any data is sent to external APIs.
 
-The intelligence layer splits into two systems. The ProactiveIntelligenceEngine runs in the background every 6 hours via iOS Background Tasks. It reads the full SwiftData history, detects patterns the user has not noticed (a goal going quiet, a domain with no activity, a milestone approaching without preparation), scores each observation by urgency, and writes them as nudges and a daily briefing. This runs without any user action. The LuminaConversationService handles real-time conversation. Before each inference call, LuminaSystemPromptBuilder constructs a context-rich prompt from the user's active journeys, plans, routines, and preferences, so the AI responds from the user's actual data rather than a generic context.
+The intelligence layer is split into two execution paths. The ProactiveIntelligenceEngine runs on iOS Background Tasks every six hours, processing the full local dataset to detect behavioural anomalies such as inactive goals, neglected domains, and unprepared milestones. Each observation is scored by urgency and persisted as structured nudges and daily briefings without requiring user interaction.The LuminaConversationService handles real-time interactions. Before each model call, the LuminaSystemPromptBuilder composes a context-aware prompt from the user’s active plans, journeys, routines, and preferences, ensuring responses are grounded in personal state rather than generic context.
 
-Inference is handled by a single router that supports four providers at runtime: Claude, GPT-4o, Gemini 1.5 Pro, and Mercury-2. Switching providers requires no code change. API keys live in the iOS Keychain. If a provider is unavailable, the router falls back gracefully.
+Inference is abstracted through a unified routing layer that supports multiple providers at runtime, including Claude, GPT-4o, Gemini 1.5 Pro, and Mercury-2. The router handles dynamic provider selection, API key management via iOS Keychain, and automatic fallback in the event of rate limits or service failure.
 
-Each layer has a clear responsibility. SwiftData manages persistence. The service layer handles all analysis and behavioral logic. The inference router abstracts provider differences. SwiftUI views are purely presentational. This structure keeps each part independently changeable without affecting the others.
+Each subsystem is strictly decoupled. SwiftData handles persistence, the service layer encapsulates all behavioural and analytical logic, the inference router abstracts external model dependencies, and SwiftUI is responsible purely for presentation. This separation ensures that each layer can evolve independently without cascading changes across the system.
 
 ## Key Features
 
-- Lumina AI companion: conversational task capture, semantic search over past notes, daily briefing generation, proactive background analysis every 6 hours
-- Multi-provider inference routing: Claude, GPT-4o, Gemini 1.5 Pro, Mercury-2 switchable at runtime, with graceful fallback on provider unavailability
-- Proactive nudge engine: goal drift, domain silence, energy pattern recommendations, milestone proximity, achievement nudges, surfaced without user action
-- Growth Mindset Engine: behavioral event recording, 8 insight types with confidence scores, resilience and recovery tracked separately from streaks
-- Complex recurrence: "every 3 days," "third Friday of the month," "weekdays only," per-instance modifications, exception dates
-- 3-layer PII scrubbing: automatic before every inference call, jurisdiction-aware, user-defined custom patterns
-- Data export: full personal data ownership
-- 189 UI test scenarios across 50+ automated flows
+* Lumina AI companion with conversational task capture and daily briefings
+* Multi-provider AI routing with graceful fallback across models
+* Proactive nudge engine based on behavioural patterns and lifecycle signals
+* Growth Mindset Engine with resilience and recovery tracking
+* Complex recurrence system with flexible scheduling rules and exceptions
+* On-device PII scrubbing before external API calls
+* Full data export and ownership
+* 189 UI test scenarios across automated flows
 
 ## Trade-offs and Decisions
 
 ### 1. Fixed 8 life domains vs. user-defined categories
-User-defined categories sound more flexible but impose a hidden cost: users have to decide what categories matter before they start, which is cognitively expensive and leads to inconsistent organisation over time. Fixed domains remove that friction and make domain-level intelligence meaningful. You can only detect that Health has gone quiet if Health is a defined, consistent category. The trade-off is reduced flexibility for users with unusual life structures.
+User-defined categories sound more flexible but impose a hidden cost: users have to decide what categories matter before they start, which is cognitively expensive and often leads to inconsistent organisation. Fixed domains remove that friction and make domain-level intelligence meaningful. You can only detect that Health has gone quiet if Health is a defined, consistent category. The trade-off is reduced flexibility for users with unusual life structures.
 
 ### 2. Resilience metrics over streak tracking
 Standard streak tracking penalises recovery. A user who breaks a 10-day streak and rebuilds for 30 days should feel progress, not loss. The Growth Mindset Engine separates currentStreak from recoveryCount, streakBreakCount, and resilienceScore, and weights recovery as a positive signal.The trade-off is that tracking three separate numbers (streak, recovery count, resilience score) instead of one makes the interface harder to read at a glance. A plain streak counter tells you one thing immediately. This tells you something more accurate, but you have to look at it for a moment longer to understand where you stand.
