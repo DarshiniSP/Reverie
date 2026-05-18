@@ -19,7 +19,7 @@ Lumina, an AI companion that runs proactively in the background every 6 hours. I
 ### Reflection:
 A Growth Mindset Engine that measures resilience and recovery, not just streaks. It records behavioral events (missed, rescheduled, recovered, abandoned), generates confidence-scored insights from 30-day histories, and surfaces patterns in how you actually work, not how you intended to work.
 
-## The core design principle: the gap between intention and action is not a motivation problem. It is a visibility problem.
+The core design principle: the gap between intention and action is not a motivation problem. It is a visibility problem.
 
 ## Demo
 
@@ -51,62 +51,62 @@ Each layer has a clear responsibility. SwiftData manages persistence. The servic
 
 ## Trade-offs and Decisions
 
-**Fixed 8 life domains vs. user-defined categories**
+### 1. Fixed 8 life domains vs. user-defined categories
 User-defined categories sound more flexible but impose a hidden cost: users have to decide what categories matter before they start, which is cognitively expensive and leads to inconsistent organisation over time. Fixed domains remove that friction and make domain-level intelligence meaningful. You can only detect that Health has gone quiet if Health is a defined, consistent category. The trade-off is reduced flexibility for users with unusual life structures.
 
-**Proactive intelligence over better search and filter**
+### 2. Proactive intelligence over better search and filter
 Search requires you to know what you are looking for. The core problem this app addresses, goal drift and domain neglect, happens precisely when users do not know what to look for. Investing in proactive detection produces higher value than making manual discovery easier. The trade-off is that nudge calibration is genuinely hard; threshold logic requires careful tuning to avoid alert fatigue, and the right threshold varies by user.
 
-**Resilience metrics over streak tracking**
+### 3. Resilience metrics over streak tracking
 Standard streak tracking penalises recovery. A user who breaks a 10-day streak and rebuilds for 30 days should feel progress, not loss. The Growth Mindset Engine separates currentStreak from recoveryCount, streakBreakCount, and resilienceScore, and weights recovery as a positive signal. The trade-off is more complex metrics storage and a less immediately legible interface than a streak counter.
 
-**Structural privacy vs. user self-censorship**
+### 4. Structural privacy vs. user self-censorship
 Users cannot consistently self-censor when talking to an AI. Telling someone "do not write personal details" places a burden the system should carry. The PII scrubber runs before every inference call and removes sensitive identifiers automatically. This adds a small latency overhead on every message but is a non-negotiable design principle.
 
-**Multi-provider inference routing**
+### 5. Multi-provider inference routing
 Single-provider dependency creates fragility: rate limits, outages, and model deprecations are real risks. Supporting four providers with graceful fallback increases resilience and gives users choice based on cost or preference. The trade-off is a more complex inference layer and four separate integration surfaces to maintain.
 
-**Local-first data model**
+### 6. Local-first data model
 Personal productivity data is inherently sensitive. CloudKit sync is available but opt-in. The trade-off is that cross-device syncing requires the user to enable it explicitly rather than being seamless by default.
 
-**TaskWork as the primary entity name instead of Task**
+### 7. TaskWork as the primary entity name instead of Task
 Swift's structured concurrency uses Task as a first-class type in the standard library. Naming the data model entity TaskWork avoids namespace collision. No clean alternative given the language constraints.
 
 ## Shortcomings
 
-**No server-side infrastructure**
+### 1. No server-side infrastructure
 The proactive engine's nudge thresholds are static, calibrated by hand rather than learned from what actually produces behaviour change. There is no way to know whether a given nudge type is useful across users, because there is no aggregation layer. Improving calibration requires rebuilding it on a backend.
 
-**Offline AI fallback is limited**
+### 2. Offline AI fallback is limited
 When network is unavailable, Lumina falls back to pre-composed responses rather than on-device inference. Local semantic search over notes works offline, but full conversational responses and briefing generation require connectivity.
 
-**Nudge threshold calibration is static and uniform**
+### 3. Nudge threshold calibration is static and uniform
 Each nudge type has hardcoded thresholds (for example, "goal drift after N days"). These should adapt per user based on behavioral feedback. If a user consistently dismisses goal drift nudges, the threshold should increase. Currently they do not.
 
-**Offline sync queue is disabled in the current build**
+### 4. Offline sync queue is disabled in the current build
 The OfflineOperationQueue architecture for handling CloudKit sync conflicts exists but is not active. Editing data across devices in poor connectivity may produce conflicts.
 
-**No collaborative or social layer**
+### 5. No collaborative or social layer
 Accountability partners, shared journeys, and social commitment mechanisms are well-documented drivers of follow-through. Reverie is entirely solo.
 
 ## Future Directions
 
-**On-device inference**
+### 6. On-device inference
 As Apple Silicon in iOS matures, moving inference fully on-device would eliminate network dependency, reduce latency, and strengthen the privacy model with no user-facing trade-off.
 
-**Adaptive nudge calibration**
+### 7. Adaptive nudge calibration
 Nudge thresholds should learn from user behaviour, tracking which nudges get acted on and which get dismissed, and adjust sensitivity per user over time. This requires a feedback signal the current build does not have.
 
-**Shared accountability mode**
+### 8. Shared accountability mode
 An opt-in feature where users share selected journey progress with a trusted person, a mentor or accountability partner, without exposing the full task log. Privacy-preserving progress sharing rather than full transparency.
 
-**HealthKit integration**
+### 9. HealthKit integration
 Pulling physiological signals (sleep, activity, HRV) into the energy pattern analysis would ground scheduling recommendations in actual physical state, not just inferred patterns from task history.
 
-**Backend analytics infrastructure**
+### 10. Backend analytics infrastructure
 A server layer would enable nudge threshold optimisation across users, model quality evaluation, and longitudinal product analytics, while keeping all personal data local on device.
 
-**ML-based completion prediction**
+### 11. ML-based completion prediction
 The current prediction logic is rule-based (task size, due date presence, historical category rates). A trained model on longitudinal user behaviour would produce more accurate and personalised estimates.
 
 ## Tech Stack
