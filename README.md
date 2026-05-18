@@ -54,22 +54,19 @@ Each layer has a clear responsibility. SwiftData manages persistence. The servic
 ### 1. Fixed 8 life domains vs. user-defined categories
 User-defined categories sound more flexible but impose a hidden cost: users have to decide what categories matter before they start, which is cognitively expensive and leads to inconsistent organisation over time. Fixed domains remove that friction and make domain-level intelligence meaningful. You can only detect that Health has gone quiet if Health is a defined, consistent category. The trade-off is reduced flexibility for users with unusual life structures.
 
-### 2. Proactive intelligence over better search and filter
-Search requires you to know what you are looking for. The core problem this app addresses, goal drift and domain neglect, happens precisely when users do not know what to look for. Investing in proactive detection produces higher value than making manual discovery easier. The trade-off is that nudge calibration is genuinely hard; threshold logic requires careful tuning to avoid alert fatigue, and the right threshold varies by user.
-
-### 3. Resilience metrics over streak tracking
+### 2. Resilience metrics over streak tracking
 Standard streak tracking penalises recovery. A user who breaks a 10-day streak and rebuilds for 30 days should feel progress, not loss. The Growth Mindset Engine separates currentStreak from recoveryCount, streakBreakCount, and resilienceScore, and weights recovery as a positive signal. The trade-off is more complex metrics storage and a less immediately legible interface than a streak counter.
 
-### 4. Structural privacy vs. user self-censorship
+### 3. Structural privacy vs. user self-censorship
 Users cannot consistently self-censor when talking to an AI. Telling someone "do not write personal details" places a burden the system should carry. The PII scrubber runs before every inference call and removes sensitive identifiers automatically. This adds a small latency overhead on every message but is a non-negotiable design principle.
 
-### 5. Multi-provider inference routing
+### 4. Multi-provider inference routing
 Single-provider dependency creates fragility: rate limits, outages, and model deprecations are real risks. Supporting four providers with graceful fallback increases resilience and gives users choice based on cost or preference. The trade-off is a more complex inference layer and four separate integration surfaces to maintain.
 
-### 6. Local-first data model
+### 5. Local-first data model
 Personal productivity data is inherently sensitive. CloudKit sync is available but opt-in. The trade-off is that cross-device syncing requires the user to enable it explicitly rather than being seamless by default.
 
-### 7. TaskWork as the primary entity name instead of Task
+### 6. TaskWork as the primary entity name instead of Task
 Swift's structured concurrency uses Task as a first-class type in the standard library. Naming the data model entity TaskWork avoids namespace collision. No clean alternative given the language constraints.
 
 ## Shortcomings
