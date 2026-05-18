@@ -11,15 +11,15 @@ What is missing is a layer of intelligence over the whole picture, something tha
 Reverie is a native iOS app built around three interconnected layers:
 
 ### Structure: 
-An 8-domain life framework (Health, Career, Relationships, Learning, Creativity, Finance, Home, Personal) with four entity types: Plans (domain buckets), Journeys (time-bound goals with milestones), Routines (recurring practices), and Tasks (individual work units). 
+An 8-domain life framework (Health, Career, Relationships, Learning, Creativity, Finance, Home, Personal) with four entity types: Plans (domain-level buckets that group related goals and give your work a sense of direction), Journeys (time-bound goals broken into milestones, designed for things that take months rather than days), Routines (recurring practices that auto-generate tasks on a schedule so you never have to re-enter them), and Tasks (individual work units that carry metadata like priority, energy cost, size, and due date). Tasks can exist independently or as part of larger structures like routines, journeys, and plans, allowing the system to understand both isolated actions and long-term behavioural patterns across life domains.
 
 ### Intelligence:
-Lumina, an AI companion that runs proactively in the background every 6 hours. It analyses your task and goal history across all domains, detects patterns you would not notice yourself, and surfaces personalised nudges and a daily briefing without any user action required. It also supports conversational task capture and semantic search over your past notes.
+Lumina, an AI companion that runs proactively in the background every 6 hours. It detects long-term patterns in your behaviour that might otherwise go unnoticed, and surfaces personalised nudges and a daily briefing without any user action required. It also supports conversational task capture and semantic search over your past notes.
 
 ### Reflection:
 A Growth Mindset Engine that measures resilience and recovery, not just streaks. It records behavioral events (missed, rescheduled, recovered, abandoned), generates confidence-scored insights from 30-day histories, and surfaces patterns in how you actually work, not how you intended to work.
 
-The core design principle: the gap between intention and action is not a motivation problem. It is a visibility problem.
+Reverie is built on the idea that people often struggle not because they lack motivation, but because they lack clear visibility into their own behaviour.
 
 ## Demo
 
